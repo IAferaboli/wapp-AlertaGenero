@@ -18,7 +18,7 @@ class Usuarie extends Conexion {
     public function create()
     {
         $this->conectar();
-        $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (nombre, apellido, dni, fecnac, celContacto, hashedni, alfanum) VALUES (?, ?, ?, ?, ?, ?, hashing($dni))");
+        $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (nombre, apellido, dni, fecnac, celContacto, hashedni, alfanum) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $prepare->bind_param("sssssss", $this->nombre, $this->apellido, $this->dni, $this->fecnac, $this->celContacto, $this->hashedni, $this->alfanum);
         $prepare->execute();
     }
@@ -77,6 +77,4 @@ class Usuarie extends Conexion {
         $resultado = $prepare->get_result();
         return $resultado->fetch_object(Agresor::class);
     }
-}
-
 }
