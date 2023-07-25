@@ -3,6 +3,15 @@
 require_once "conexion.php";
 require_once "agresores.php";
 require_once "usuarie.php";
+require_once "altura.php";
+require_once "cicatrices.php";
+require_once "discapacidades.php";
+require_once "instituciones.php";
+require_once "modalidades.php";
+require_once "pelos.php";
+require_once "tatuajes.php";
+require_once "tipos_violencias.php";
+require_once "usuarie.php";
 
 class Descargo extends Conexion {
 

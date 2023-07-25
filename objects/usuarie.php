@@ -4,14 +4,22 @@ require_once "conexion.php";
 
 class Usuarie extends Conexion {
 
-    public $nombre, $apellido, $dni, $fecnac, $celContacto, $id_usuarie;
+    public $nombre, $apellido, $dni, $fecnac, $celContacto, $id_usuarie, $hashedni, $alfanum;
+
+    //Hashear el dni (codificar el dni en hexadecimal)
+    function hashing($dni){
+        $algo = 'sha256';
+        $hashedni = hash($algo, $dni);
+
+        return $hashedni;
+    }
 
     //Create - Cargar
     public function create()
     {
         $this->conectar();
-        $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (nombre, apellido, dni, fecnac, celContacto) VALUES (?, ?, ?, ?, ?)");
-        $prepare->bind_param("sssss", $this->nombre, $this->apellido, $this->dni, $this->fecnac, $this->celContacto);
+        $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (nombre, apellido, dni, fecnac, celContacto, hashedni, alfanum) VALUES (?, ?, ?, ?, ?, ?, hashing($dni))");
+        $prepare->bind_param("sssssss", $this->nombre, $this->apellido, $this->dni, $this->fecnac, $this->celContacto, $this->hashedni, $this->alfanum);
         $prepare->execute();
     }
     
@@ -58,5 +66,17 @@ class Usuarie extends Conexion {
     //     $prepare->bind_param("i", $this->id_usuarie);
     //     $prepare->execute();
     // }
+
+
+    public static function getUsuarieHashed($id_agresor){
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM agresores WHERE id_agresores = ?");
+        $prepare->bind_param("i", $id_agresor);
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado->fetch_object(Agresor::class);
+    }
+}
 
 }
