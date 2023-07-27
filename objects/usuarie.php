@@ -77,5 +77,15 @@ class Usuarie extends Conexion {
     //     $prepare->execute();
     // }
 
+    public static function getUsuarie($hashedni){
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM usuaries WHERE hashedni = ?");
+        $prepare->bind_param("i", $hashedni);
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado->fetch_object(Usuarie::class);
+    }
+    
 
 }
