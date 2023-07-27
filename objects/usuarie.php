@@ -14,6 +14,16 @@ class Usuarie extends Conexion {
         return $hashedni;
     }
 
+    function codearuser($nombre, $apellido, $dni){
+        $name = substr($nombre, 0, 3);
+        $apell = substr($apellido, -3, 3);
+        $denei = substr($dni, -4, 3);
+
+        $alfanum = $name . $apell . $denei;
+
+        return $alfanum;
+    }
+
     //Create - Cargar
     public function create()
     {
@@ -68,13 +78,4 @@ class Usuarie extends Conexion {
     // }
 
 
-    public static function getUsuarieHashed($id_agresor){
-        $conexion = new Conexion();
-        $conexion->conectar();
-        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM agresores WHERE id_agresores = ?");
-        $prepare->bind_param("i", $id_agresor);
-        $prepare->execute();
-        $resultado = $prepare->get_result();
-        return $resultado->fetch_object(Agresor::class);
-    }
 }

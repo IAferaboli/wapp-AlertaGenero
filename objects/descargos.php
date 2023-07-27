@@ -18,11 +18,11 @@ class Descargo extends Conexion {
     public $id_descargo, $nombre, $apellido, $dni, $id_altura, $id_cutis, $id_colorpelo, $relacion, $id_tatoo, $id_cicatriz, $id_discap, $id_tipo, $id_modalidad, $descrip;
 
 
-    public static function getUsuarie($id_usuarie){
+    public static function getUsuarie($dni){
         $conexion = new Conexion();
         $conexion->conectar();
-        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM usuaries WHERE id_usuarie = ?");
-        $prepare->bind_param("i", $id_usuarie);
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM usuaries WHERE dni = ?");
+        $prepare->bind_param("i", $dni);
         $prepare->execute();
         $resultado = $prepare->get_result();
         return $resultado->fetch_object(Usuarie::class);
@@ -31,7 +31,7 @@ class Descargo extends Conexion {
     public static function getAgresor($id_agresor){
         $conexion = new Conexion();
         $conexion->conectar();
-        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM agresores WHERE id_agresores = ?");
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM agresores WHERE id_agresor = ?");
         $prepare->bind_param("i", $id_agresor);
         $prepare->execute();
         $resultado = $prepare->get_result();
