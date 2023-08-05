@@ -17,15 +17,16 @@ class Usuarie extends Conexion {
     //Create - Cargar
     public function cargar_usuarie()
     {
-        hashing($this->dni);
-        getUsuarie($this->hashedni);
+        $this->hashing($this->dni);
+        self::getUsuarie($this->hashedni);
 
         //corroborar existencia del usuarie
-        if(getUsuarie == null){
-        $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (nombre, apellido, dni, fecnac, celContacto, hashedni, alfanum) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $prepare->bind_param("sssssss", $this->nombre, $this->apellido, $this->dni, $this->fecnac, $this->celContacto, $this->hashedni);
-        $prepare->execute();
-
+        if($this->hashedni == null){
+            $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (nombre, apellido, dni, fecnac, celContacto, hashedni) VALUES (?, ?, ?, ?, ?, ?)");
+            $prepare->bind_param("ssisss", $this->nombre, $this->apellido, $this->dni, $this->fecnac, $this->celContacto, $this->hashedni);
+            $prepare->execute();
+        } else {
+            //código que pase los datos a descargos
         }
         
     }
