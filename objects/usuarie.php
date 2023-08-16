@@ -7,7 +7,7 @@ class Usuarie extends Conexion {
     public $nombre, $apellido, $dni, $fecnac, $celContacto, $id_usuarie, $hashedni;
 
     //Hashear el dni (codificar el dni en hexadecimal)
-    public function hashing($dni){
+    private function hashing($dni){
         $algo = 'sha256';
         $hashedni = hash($algo, $dni);
 
@@ -17,48 +17,20 @@ class Usuarie extends Conexion {
     //Create - Cargar
     public function cargar_usuarie()
     {
-        $this->hashing($this->dni);
-        self::getUsuarie($this->hashedni);
+        
+        self::getUsuarie($this->hashing($this->dni));
 
         //corroborar existencia del usuarie
-        if($this->hashedni == null){
+        if(!$this->hashedni){
             $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (nombre, apellido, dni, fecnac, celContacto, hashedni) VALUES (?, ?, ?, ?, ?, ?)");
             $prepare->bind_param("ssisss", $this->nombre, $this->apellido, $this->dni, $this->fecnac, $this->celContacto, $this->hashedni);
             $prepare->execute();
         } else {
-            //código que pase los datos a descargos
+            return $this->getUsuarie($this->hashedni);
         }
         
     }
     
-    // //Read - Leer
-    // public static function readAll()
-    // {
-    //     $conexion = new Conexion();
-    //     $conexion->conectar();
-    //     $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM usuaries");
-    //     $prepare->execute();
-    //     $resultado = $prepare->get_result();
-
-    //     $usuaries = array();
-    //     while ($usuaries = $resultado->fetch_object(usuarie::class)) {
-    //         array_push($usuaries, $usuarie);
-    //     }
-
-    //     return $usuaries;
-    // }
-
-    // //Obtener xxxx por id
-    // public static function getByID($id_usuarie){
-    //     $conexion = new Conexion();
-    //     $conexion->conectar();
-    //     $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM usuaries WHERE id_usuarie = ?");
-    //     $prepare->bind_param("i", $id_usuarie);
-    //     $prepare->execute();
-    //     $resultado = $prepare->get_result();
-    //     return $resultado->fetch_object(Usuarie::class);
-    // }
-
     // //Update - Actualizar
     // public function update() {
     //     $this->conectar();
