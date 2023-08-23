@@ -51,17 +51,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-        <!-- <select name="sexo" placeholder="Sexo" required>
-            <option value="H">Hombre</option>
-            <option value="M">Mujer</option>
-        </select>
-        <select name="id_departamento" placeholder="departamento" required>
-            <?php foreach($departamentos as $departamento) : ?>
-                <option value="<?= $departamento->id ?>"><?= $departamento->nombre ?></option>
-            <?php endforeach; ?>
-        </select> -->
-
-

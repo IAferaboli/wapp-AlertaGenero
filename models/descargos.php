@@ -15,7 +15,7 @@ require_once "usuarie.php";
 
 class Descargo extends Conexion {
 
-    public $id_descargo, $nombre, $apellido, $dni, $id_altura, $id_cutis, $id_colorpelo, $relacion, $id_tatoo, $id_cicatriz, $id_discap, $id_tipo, $id_modalidad, $descrip;
+    public $id_descargo, $nombre, $apellido, $dni, $id_altura, $id_colorpelo,$id_tatoo, $id_cicatriz, $id_discap, $id_tipo, $id_modalidad, $descrip;
 
 
     public static function getUsuarie($dni){
