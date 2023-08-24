@@ -16,8 +16,7 @@ if(isset($_POST['dni']) || isset($_POST['nombre']) || isset($_POST['nombre_autop
     $usuarie->fecnac = $_POST['fecnac'];
     $usuarie->celContacto = $_POST['celContacto'];
     $usuarie->id_institucion = $_POST['id_institucion'];
-    $usuarie->cargar_usuarie();  
-
+    $usuarie->cargar_usuarie();
 }
 
 require_once "../Views/createUsuarie.view.php";
