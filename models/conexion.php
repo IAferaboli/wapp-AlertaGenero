@@ -1,7 +1,8 @@
 <?php
 
 class Conexion {
-    public $conect, $ip, $usuario, $password, $db_name;
+    public $conect, $ip = 'localhost', $usuario = 'root', $password = '', $db_name = 'alertagenero';
+
     public function conectar() {
         $this->conect= mysqli_connect($this->ip, $this->usuario, $this->password, $this->db_name);
     }
@@ -10,3 +11,4 @@ class Conexion {
         mysqli_close($this->conect);
     }
 }
+
