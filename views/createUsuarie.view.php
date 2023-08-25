@@ -17,17 +17,17 @@
                       <img src="#" alt="Avatar" class="avatar">
                     </div>
 
-                    <label for="dni" class ="form-label"><b>DNI (sin puntos)</b></label>
-                    <input type="int" id="dni" placeholder="Ingresar dni" name="dni" required>
+                    <label for="dni" class ="form-label"><b>DNI</b></label>
+                    <input type="int" id="dni" placeholder="DNI sin puntos" name="dni" required>
 
                     <label for="nombre" class ="form-label"><b>Nombre</b></label>
-                    <input type="text" id="nombre" placeholder="Ingresar nombre" name="nombre" required>
+                    <input type="text" id="nombre" placeholder="Nombre como DNI" name="nombre" required>
 
                     <label for="nombre_autoperc" class ="form-label"><b>Nombre autopercibido</b></label>
-                    <input type="text" id="nombre_autoperc" placeholder="Ingresar nombre autopercibido" name="nombre_autoperc">
+                    <input type="text" id="nombre_autoperc" placeholder="Nombre autopercibido" name="nombre_autoperc">
            
                     <label for="apellido" class ="form-label"><b>Apellido</b></label>
-                    <input type="text" id="apellido" placeholder="Ingresar apellido" name="apellido" required>
+                    <input type="text" id="apellido" placeholder="Apellido" name="apellido" required>
 
                     <label for="fecnac" class ="form-label"><b>Fecha de nacimiento</b></label>
                     <input type="date" id="fecnac" placeholder="(AAAA-MM-DD))" name="fecnac" required>

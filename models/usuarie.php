@@ -23,7 +23,7 @@ class Usuarie extends Conexion {
         //corroborar existencia del usuarie
         if(!$this->hashedni){
             $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (dni, hashedni, nombre, nombre_autoperc, apellido, fecnac, celContacto, id_institucion) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $prepare->bind_param("issssss", $this->dni, $this->hashedni, $this->nombre, $this->nombre_autoperc, $this->apellido, $this->fecnac, $this->celContacto, $this->id_institucion);
+            $prepare->bind_param("issssssi", $this->dni, $this->hashedni, $this->nombre, $this->nombre_autoperc, $this->apellido, $this->fecnac, $this->celContacto, $this->id_institucion);
             $prepare->execute();
         } else {
             return $this->getUsuarie($this->hashedni);
