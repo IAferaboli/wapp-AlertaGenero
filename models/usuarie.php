@@ -31,22 +31,6 @@ class Usuarie extends Conexion {
         
     }
     
-    // //Update - Actualizar
-    // public function update() {
-    //     $this->conectar();
-    //     $prepare = mysqli_prepare($this->conect, "UPDATE usuaries SET nombre = ?, apellido = ?, dni = ?, fecnac = ?, celContacto = ? WHERE id_usuarie = ?");
-    //     $prepare->bind_param("sssssi", $this->nombre, $this->apellido, $this->dni, $this->fecnac, $this->celContacto, $this->id_usuarie);
-    //     $prepare->execute();
-    // }
-
-    // //Delete - Eliminar registro -> averiguar cómo "hide" el registro
-    // public function delete(){
-    //     $this->conectar();
-    //     $prepare = mysqli_prepare($this->conect, "DELETE FROM usuaries WHERE id_usuarie = ?");
-    //     $prepare->bind_param("i", $this->id_usuarie);
-    //     $prepare->execute();
-    // }
-
     public static function getUsuarie($hashedni){
         $conexion = new Conexion();
         $conexion->conectar();

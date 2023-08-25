@@ -35,7 +35,8 @@
                     <label for="celContacto" class ="form-label"><b>Celular Contacto</b></label>
                     <input type="text" id="celContacto" placeholder="Sin 0 ni 15" name="celContacto" required>
 
-                    <select name="id_institucion" placeholder="Institución" required>
+                    <label for="id_institucion" class ="form-label"><b>Institución</b></label>
+                    <select name="id_institucion" id="id_institucion" placeholder="Institución" required>
                         <?php foreach($instituciones as $institucion) : ?>
                             <option value="<?= $institucion->id_institucion ?>"><?= $institucion->nombre ?></option>
                         <?php endforeach; ?>
