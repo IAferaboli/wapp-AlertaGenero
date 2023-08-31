@@ -1,0 +1,273 @@
+/* Configuracion general */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  /* font-family: "ubuntu"; */
+  font-family: cursive;
+  
+}
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_bold.woff);
+  font-weight: bold;
+}
+
+/* Escala de imagen(logo) */
+img {
+  width: 100%;
+}
+
+/* Diseño de la cabecera */
+header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+  /* background: #7e1175; */
+  background: #50094a;
+
+}
+
+header .header-left {
+  display: flex;
+  align-items: center;
+}
+header .header-left .logo {
+  width: 53px;
+  -webkit-filter: drop-shadow(3px 3px 0 rgb(0, 0, 0, 0.5))
+x            drop-shadow(-3px -3px 0 rgb(0, 0, 0, 0.5));
+  filter: drop-shadow(3px 3px 0 rgb(0, 0, 0, 0.5)) 
+          drop-shadow(-3px -3px 0 rgb(0, 0, 0, o.5));
+}
+
+header .header-left nav {
+  margin-left: 50px;
+}
+header .header-left nav ul {
+  display: flex;
+}
+
+
+/* Posicion y color de letras de navegador */
+nav ul li a {
+  display: block;
+  color: #a559d1;
+  font-size: 18px;
+  padding: 5px 10px;
+  transition: 0.2s;
+  text-shadow: 2px 2px 5px rgb(65, 26, 88);
+}
+/* Animacion al pasar por encima */
+nav ul li a:hover{
+  cursor: pointer;
+  color: #f3f3f3;
+  transition: all 0.8s linear;
+  
+}
+
+
+/* nav .login-signup {
+  display: none;
+} */
+header .header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* comentar */
+/* header .login-signup {
+  color: #cfd9e0;
+  font-weight: bold;
+}
+header .login-signup a {
+  display: inline-block;
+  color: #360c33;
+  background: #7854a7;
+  padding: 5px 12px;
+  border-radius: 5px;
+}  */
+header .header-right .hamburger {
+  margin-left: 20px;
+  cursor: pointer;
+  display: none;
+}
+header .header-right .hamburger div {
+  width: 30px;
+  height: 2px;
+  margin: 6px 0;
+  background: #a559d1;
+  
+}
+@media only screen and (max-width: 1000px) {
+  header {
+      padding: 0 20px;
+  }
+  header .header-right .hamburger {
+      display: block;
+  }
+  header .header-left nav {
+      margin: 0;
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: fit-content;
+      background: rgb(94, 10, 87, 9);
+      padding: 30px;
+      transition: 0.3s;
+      text-align: center;
+      z-index: -1;
+      
+  }
+  header .header-left nav.active {
+      top: 70px;
+  }
+  header .header-left nav ul {
+      display: block;
+  }
+}
+
+/* @media only screen and (max-width: 500px) {
+  nav .login-signup {
+      display: block;
+      margin-top: 20px;
+  }
+  header .header-right .login-signup {
+      display: none;
+  }
+} */
+
+.homelander{
+  /* background: rgb(247,100,186);
+  background: linear-gradient(141deg, rgba(247,100,186,1) 0%, rgba(158,0,179,1) 100%);  */
+  min-height : 100vh; 
+  background: rgb(148, 62, 112);
+  background: linear-gradient(141deg, rgb(129, 46, 95) 0%, rgb(65, 5, 73) 100%); 
+  
+
+
+  /* background-color: #4158D0;
+  background-image: linear-gradient(334deg, #4158D0 0%, #C850C0 46%, #ff70fb 100%); 
+  */
+
+}
+
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.form-container {
+  background-color:rgba(125, 51, 168, 0.6) ;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  
+}
+
+.form-container h2 {
+  text-align: center;
+}
+
+.form-container label,
+.form-container input[type="text"] {
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.form-container input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form-container input[type="number"]{
+  padding: 8px;
+  width:100%;
+  border: 1px solid #ccc;    
+  border-radius: 5px;
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+
+.form-container input[type="date"]{
+  padding: 8px;
+  width:100%;
+  border: 1px solid #ccc;    
+  border-radius: 5px;
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+  
+/* .form-container input[type="date"]{
+  background-color: #50094a;
+  padding: 15px;
+  position: absolute;
+  transform: translate(-50, -50%);
+  top: 50%;
+  left: 50%;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+} */
+
+/* 
+.form-container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container input[type="submit"]:hover {
+  background-color: #45a049;
+} */
+
+
+.button-1 {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #F082AC;
+}

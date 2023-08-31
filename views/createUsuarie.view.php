@@ -4,51 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style3.css">
+    <link rel="icon"   href="../src/alertagenero_logo.png">
     <title>Usuarie</title>
 </head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 offset-md-4">
-                <form action="" method="post" class="modal-content animate">
+
+<body class="homelander">
+
+<header>
+    <div class="header-left">
+        <div class="logo">
+            <a href="createUsuarie.view.php"><img src="../src/alertagenero_logo.png" alt="Logo-alerta_genero"></a>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="">Inicio</a>
+                </li>
+                <li>
+                    <a href="">Capacitación</a>
+                </li>
+                <li>
+                    <a href="">Politica de privacidad</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header-right">
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</header>
+<script>
+    
+    hamburger = document.querySelector(".hamburger");
+    nav = document.querySelector("nav");
+    hamburger.onclick = function() {
+        nav.classList.toggle("active");
+    }
+</script>
+
+    <div class="form-container">
+        <div>
+            <div>
+                <form action="" method="post">
                     
-                    <div class="col-md-3 offset-md-4">
-                      <img src="#" alt="Avatar" class="avatar">
-                    </div>
+                    <h2>Datos Personales</h2>
 
-                    <label for="dni" class ="form-label"><b>DNI</b></label>
-                    <input type="int" id="dni" placeholder="DNI sin puntos" name="dni" required>
+                    <label for="dni"><b>Nro. Documento</b></label>
+                    <input type="number" id="dni" placeholder="Ingresar dni (Sin puntos)" name="dni" required>
 
-                    <label for="nombre" class ="form-label"><b>Nombre</b></label>
-                    <input type="text" id="nombre" placeholder="Nombre como DNI" name="nombre" required>
+                    <label for="nombre"><b>Nombre</b></label>
+                    <input type="text" id="nombre" placeholder="Ingresar nombre (DNI)" name="nombre" required>
 
-                    <label for="nombre_autoperc" class ="form-label"><b>Nombre autopercibido</b></label>
-                    <input type="text" id="nombre_autoperc" placeholder="Nombre autopercibido" name="nombre_autoperc">
+                    <label for="nombre_autoperc"><b>Nombre autopercibido</b></label>
+                    <input type="text" id="nombre_autoperc" placeholder="Ingresar nombre autopercibido" name="nombre_autoperc">
            
-                    <label for="apellido" class ="form-label"><b>Apellido</b></label>
-                    <input type="text" id="apellido" placeholder="Apellido" name="apellido" required>
+                    <label for="apellido"><b>Apellido</b></label>
+                    <input type="text" id="apellido" placeholder="Ingresar apellido (DNI)" name="apellido" required>
 
-                    <label for="fecnac" class ="form-label"><b>Fecha de nacimiento</b></label>
+                    <label for="fecnac"><b>Fecha de nacimiento</b></label>
                     <input type="date" id="fecnac" placeholder="(AAAA-MM-DD))" name="fecnac" required>
            
                     <label for="celContacto" class ="form-label"><b>Celular Contacto</b></label>
                     <input type="text" id="celContacto" placeholder="Sin 0 ni 15" name="celContacto" required>
 
-                    <label for="id_institucion" class ="form-label"><b>Institución</b></label>
-                    <select name="id_institucion" id="id_institucion" placeholder="Institución" required>
+                    <label for="id_institucion"><b>Institución</b></label>
+                    <select  name="id_institucion" placeholder="Institución" required>
                         <?php foreach($instituciones as $institucion) : ?>
                             <option value="<?= $institucion->id_institucion ?>"><?= $institucion->nombre ?></option>
                         <?php endforeach; ?>
                     </select>
            
-                    <button class="btn btn-primary" type="submit">Siguiente</button>
+                    <button class="button-1" type="submit">Siguiente</a></button>
            
                </form>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
