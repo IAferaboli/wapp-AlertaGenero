@@ -18,10 +18,10 @@ class Usuarie extends Conexion {
     public function cargar_usuarie()
     {
         
-        self::getUsuarie($this->hashing($this->dni));
+        $usuarie= self::getUsuarie($this->hashing($this->dni));
 
         //corroborar existencia del usuarie
-        if(!$this->hashedni){
+        if(!$usuarie){
             $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (dni, hashedni, nombre, nombre_autoperc, apellido, fecnac, celContacto, id_institucion) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $prepare->bind_param("issssssi", $this->dni, $this->hashedni, $this->nombre, $this->nombre_autoperc, $this->apellido, $this->fecnac, $this->celContacto, $this->id_institucion);
             $prepare->execute();
