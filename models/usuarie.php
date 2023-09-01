@@ -2,12 +2,14 @@
 
 require_once "conexion.php";
 
-class Usuarie extends Conexion {
+class Usuarie extends Conexion
+{
 
     public $id_usuarie, $dni, $hashedni, $nombre, $nombre_autoperc, $apellido, $fecnac, $celContacto, $id_institucion;
 
     //Hashear el dni (codificar el dni en hexadecimal)
-    private function hashing($dni){
+    private function hashing($dni)
+    {
         $algo = 'sha256';
         $hashedni = hash($algo, $dni);
 
@@ -17,21 +19,28 @@ class Usuarie extends Conexion {
     //Create - Cargar
     public function cargar_usuarie()
     {
-        
-        $usuarie= self::getUsuarie($this->hashing($this->dni));
 
-        //corroborar existencia del usuarie
-        if(!$usuarie){
-            $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (dni, hashedni, nombre, nombre_autoperc, apellido, fecnac, celContacto, id_institucion) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $prepare->bind_param("issssssi", $this->dni, $this->hashedni, $this->nombre, $this->nombre_autoperc, $this->apellido, $this->fecnac, $this->celContacto, $this->id_institucion);
+        $hashedni = $this->hashing($this->dni);
+
+        //Busco usuarie por hash.
+        $usuarie = $this->getUsuarie($hashedni);
+
+        //Corroborar existencia del usuarie
+
+        if (!$usuarie) {
+            $this->conectar();
+            $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (dni, hashedni, nombre, nombre_autoperc, apellido, fecnac, celContacto, id_institucion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $prepare->bind_param("issssssi", $this->dni, $hashedni, $this->nombre, $this->nombre_autoperc, $this->apellido, $this->fecnac, $this->celContacto, $this->id_institucion);
             $prepare->execute();
         } else {
-            return $this->getUsuarie($this->hashedni);
+            return $usuarie;
         }
-        
     }
-    
-    public static function getUsuarie($hashedni){
+
+    //Buscar usuarie por hash
+
+    public static function getUsuarie($hashedni)
+    {
         $conexion = new Conexion();
         $conexion->conectar();
         $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM usuaries WHERE hashedni = ?");
@@ -40,8 +49,9 @@ class Usuarie extends Conexion {
         $resultado = $prepare->get_result();
         return $resultado->fetch_object(Usuarie::class);
     }
-    
-    public static function getAll(){
+
+    public static function getAll()
+    {
         $conexion = new Conexion();
         $conexion->conectar();
         $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM usuaries");
@@ -49,11 +59,10 @@ class Usuarie extends Conexion {
         $resposta = $prepare->get_result();
 
         $usuaries = array();
-        while($usuarie = $resposta->fetch_object(Usuarie::class)) {
+        while ($usuarie = $resposta->fetch_object(Usuarie::class)) {
             array_push($usuaries, $usuarie);
         }
 
         return $usuaries;
     }
-
 }
