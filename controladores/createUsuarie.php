@@ -1,8 +1,8 @@
 <?php
 
 
-include_once "../models/usuarie.php";
-include_once "../models/instituciones.php";
+require_once "../models/usuarie.php";
+require_once "../models/instituciones.php";
 
 $instituciones = Institucion::getAll();
 
@@ -20,3 +20,5 @@ if(isset($_POST['dni']) || isset($_POST['nombre']) || isset($_POST['nombre_autop
 }
 
 require_once "../Views/createUsuarie.view.php";
+
+
