@@ -4,7 +4,7 @@ require_once "conexion.php";
 
 class Agresor extends Conexion {
 
-    public $id_agresor, $nombre, $apellido, $id_altura, $id_pelo, $id_tatoo, $id_cicatriz, $id_discap, $alfanum, $alturaSeleccionada;
+    public $id_agresor, $nombre, $apellido, $id_altura, $id_pelo, $id_tatoo, $id_cicatriz, $id_discap, $alturaSeleccionada, $peloSeleccionado;
 
     
     // public function codearagresor($nombre, $apellido, $id_agresor){
