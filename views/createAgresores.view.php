@@ -5,25 +5,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../views/style3.css">
+    <link rel="icon" href="../src/alertagenero_logo.png">
     <title>Agresor</title>
 </head>
 
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 offset-md-4">
-                <form action="" method="post" class="modal-content animate">
+<body class="homelander">
 
-                    <div class="col-md-3 offset-md-4">
-                        <img src="#" alt="Avatar" class="avatar">
-                    </div>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <a href="createUsuarie.php"><img src="../src/alertagenero_logo.png" alt="Logo-alerta_genero"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="">Capacitación</a>
+                    </li>
+                    <li>
+                        <a href="">Politica de privacidad</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        nav = document.querySelector("nav");
+        hamburger.onclick = function() {
+            nav.classList.toggle("active");
+        }
+    </script>
 
-                    <label for="nombre-agresor" class="form-label"><b>Nombre</b></label>
-                    <input type="text" id="nombre-agresor" placeholder="Nombre del agresor" name="nombre-agresor">
+    <div class="form-container">
+        <div>
+            <div>
+                <form action="" method="post">
 
-                    <label for="apellido-agresor" class="form-label"><b>Apellido</b></label>
-                    <input type="text" id="apellido-agresor" placeholder="Apellido del agresor" name="apellido-agresor">
+
+                    <label for="nombre-agresor"><b>Nombre</b></label>
+                    <input type="text" id="nombre-agresor" placeholder="Ingresar nombre" name="nombre-agresor">
+
+                    <label for="apellido-agresor"><b>Apellido</b></label>
+                    <input type="text" id="apellido-agresor" placeholder="Ingresar apellido" name="apellido-agresor">
 
                     <div>
                         <h2>Características del agresor</h2>
@@ -40,7 +74,6 @@
                             </div>
                         <?php } ?>
                     </div>
-
                     <div class="row">
                         <div>
                             <h4>Color pelo</h4>
@@ -53,14 +86,13 @@
                         <?php } ?>
                     </div>
 
-                    <button class="btn btn-primary" type="submit">Siguiente</button>
+                    <button class="button-1" type="submit">Siguiente</a></button>
 
                 </form>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 
 </html>

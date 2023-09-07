@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="../views/style3.css">
     <link rel="icon"   href="../src/alertagenero_logo.png">
     <title>Usuarie</title>
 </head>
@@ -14,12 +14,12 @@
 <header>
     <div class="header-left">
         <div class="logo">
-            <a href="createUsuarie.view.php"><img src="../src/alertagenero_logo.png" alt="Logo-alerta_genero"></a>
+            <a href="createUsuarie.php"><img src="../src/alertagenero_logo.png" alt="Logo-alerta_genero"></a>
         </div>
         <nav>
             <ul>
                 <li>
-                    <a href="">Inicio</a>
+                    <a href="#">Inicio</a>
                 </li>
                 <li>
                     <a href="">Capacitación</a>
