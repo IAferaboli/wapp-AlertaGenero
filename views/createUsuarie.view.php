@@ -79,7 +79,7 @@
                             <?php endforeach; ?>
                         </select>
 
-                        <button class="button-1" type="submit"><a href="../views/agresores.view.php"> Siguiente</a></button>
+                        <button class="button-1" type="submit"><a href="../controladores/createAgresor.php">Siguiente</a></button>
                     </form>
                 </div>
             </div>
