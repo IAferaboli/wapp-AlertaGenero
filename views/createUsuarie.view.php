@@ -8,6 +8,7 @@ require_once "../layout/head.view.php";
 </head>
 
 <body class="homelander">
+    
 <?php
 require_once "../layout/menu.view.php";
 ?>
