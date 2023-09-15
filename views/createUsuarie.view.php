@@ -10,9 +10,7 @@
     <link rel="icon" href="../src/alertagenero_logo.png">
     <title>Usuarie</title>
 </head>
-
-<body class="homelander">
-    <header>
+<header>
         <div class="header-left">
             <div class="logo">
                 <a href="../controladores/createUsuarie.php"><img src="../src/alertagenero_logo.png" alt="Logo-alerta_genero"></a>
@@ -46,6 +44,8 @@
             nav.classList.toggle("active");
         }
     </script>
+
+<body class="homelander">
     <div class="bodi">
         <div class="form-container">
             <div>

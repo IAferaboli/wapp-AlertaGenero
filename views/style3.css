@@ -114,6 +114,14 @@ header .header-right .hamburger div {
   }
 }
 
+
+.agresor{
+  min-height : 100vh; 
+  background: rgb(148, 62, 62);
+  background: linear-gradient(141deg, rgb(129, 46, 46) 0%, rgb(73, 5, 5) 100%); 
+  
+}
+
 .homelander{
   min-height : 100vh; 
   background: rgb(148, 62, 112);
