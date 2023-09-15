@@ -1,18 +1,12 @@
 <?php
-require_once "../layout/head.view.php";
+require_once "head.view.php";
 ?>
-
-
 <head>
-    <title>Usuarie</title>
+<title>Usuarie</title>
 </head>
 
 <body class="homelander">
-<?php
-require_once "../layout/menu.view.php";
-?>
-
-<div class="bodi">
+    <div class="bodi">
         <div class="form-container">
             <div>
                 <div>
@@ -51,11 +45,7 @@ require_once "../layout/menu.view.php";
             </div>
         </div>
     </div>
-
-    <?php
-    require_once "../layout/footer.view.php";
-    ?>
-
-</body>
-
-</html>
+        
+<?php
+require_once "footer.view.php";
+?>

@@ -115,7 +115,7 @@ header .header-right .hamburger div {
 }
 
 
-.agresor{
+.homelander-2{
   min-height : 100vh; 
   background: rgb(148, 62, 62);
   background: linear-gradient(141deg, rgb(129, 46, 46) 0%, rgb(73, 5, 5) 100%); 
@@ -186,35 +186,6 @@ body {
   font-weight: bolder;
   margin-bottom: 10px;
 }
-
-  
-/* .form-container input[type="date"]{
-  background-color: #50094a;
-  padding: 15px;
-  position: absolute;
-  transform: translate(-50, -50%);
-  top: 50%;
-  left: 50%;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-} */
-
-/* 
-.form-container input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.form-container input[type="submit"]:hover {
-  background-color: #45a049;
-} */
 
 
 .button-1 {
