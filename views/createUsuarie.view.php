@@ -7,14 +7,14 @@ require_once "../layout/head.view.php";
     <title>Usuarie</title>
 </head>
 
-<body class="homelander">
-    
-<?php
-require_once "../layout/menu.view.php";
-?>
+<body class="form-vista-1">
 
-<div class="bodi">
-        <div class="form-container">
+    <?php
+    require_once "../layout/menu.view.php";
+    ?>
+
+    <div class="bodi">
+        <div class="form-container-1">
             <div>
                 <div>
                     <form action="" method="post">
@@ -45,7 +45,9 @@ require_once "../layout/menu.view.php";
                                 <option value="<?= $institucion->id_institucion ?>"><?= $institucion->nombre ?></option>
                             <?php endforeach; ?>
                         </select>
-
+                        <div class="checkbox">
+                            <input type="checkbox"> <strong>¿Necesitó atención medica?</strong></input><br>
+                        </div>
                         <button class="button-1" type="submit"><a href="../controladores/createAgresor.php"> Siguiente</a></button>
                     </form>
                 </div>

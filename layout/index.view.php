@@ -5,7 +5,7 @@ require_once "head.view.php";
 <title>Usuarie</title>
 </head>
 
-<body class="homelander">
+<body class="form-vista-1">
     <div class="bodi">
         <div class="form-container">
             <div>
