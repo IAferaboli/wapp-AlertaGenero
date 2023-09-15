@@ -114,6 +114,7 @@ header .header-right .hamburger div {
   }
 }
 
+/* Vista del usuario */
 .form-vista-1{
   min-height : 100vh; 
   background: rgb(148, 62, 112);
@@ -121,7 +122,7 @@ header .header-right .hamburger div {
   
 }
 
-
+/* Vista del agresor */
 .form-vista-2{
   min-height : 100vh; 
   background: rgb(194, 52, 52);
@@ -281,7 +282,7 @@ select{
   padding-bottom: 10px;
 }
 
-
+/* Estilo de pie de pagina */
 footer{
   margin-top: 10px;
   position: relative;
@@ -329,7 +330,6 @@ footer .social_icon li a:hover
 }
 
 footer .menu li a
-
 {
   font-size: 1.2em;
   color: #fff;
