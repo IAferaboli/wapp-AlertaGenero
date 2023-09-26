@@ -114,10 +114,20 @@ header .header-right .hamburger div {
   }
 }
 
-.homelander{
+/* Vista del usuario */
+.form-vista-1{
   min-height : 100vh; 
   background: rgb(148, 62, 112);
   background: linear-gradient(141deg, rgb(129, 46, 95) 0%, rgb(65, 5, 73) 100%); 
+  
+}
+
+/* Vista del agresor */
+.form-vista-2{
+  min-height : 100vh; 
+  background: rgb(194, 52, 52);
+  /* background: linear-gradient(141deg, rgb(177, 40, 40) 0%, rgb(160, 11, 11) 100%);  */
+  background: linear-gradient(141deg, rgb(205 67 67) 0%, rgb(205 28 28) 100%);
   
 }
 
@@ -132,7 +142,7 @@ body {
   padding: 10px;
 }
 
-.form-container {
+.form-container-1 {
   background-color:rgba(125, 51, 168, 0.6) ;
   max-width: 400px;
   margin: 0 auto;
@@ -141,24 +151,24 @@ body {
   
 }
 
-.form-container h2 {
+.form-container-1 h2 {
   text-align: center;
 }
 
-.form-container label,
-.form-container input[type="text"] {
+.form-container-1 label,
+.form-container-1 input[type="text"] {
   display: block;
   font-weight: bolder;
   margin-bottom: 10px;
 }
 
-.form-container input[type="text"] {
+.form-container-1 input[type="text"] {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.form-container input[type="number"]{
+.form-container-1 input[type="number"]{
   padding: 8px;
   width:100%;
   border: 1px solid #ccc;    
@@ -169,7 +179,7 @@ body {
 }
 
 
-.form-container input[type="date"]{
+.form-container-1 input[type="date"]{
   padding: 8px;
   width:100%;
   border: 1px solid #ccc;    
@@ -179,38 +189,58 @@ body {
   margin-bottom: 10px;
 }
 
+.form-container-2 {
+  /* background-color:rgb(168, 51, 51) ; */
+  background-color: rgb(199 14 14);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
   
-/* .form-container input[type="date"]{
-  background-color: #50094a;
-  padding: 15px;
-  position: absolute;
-  transform: translate(-50, -50%);
-  top: 50%;
-  left: 50%;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-} */
-
-/* 
-.form-container input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.form-container input[type="submit"]:hover {
-  background-color: #45a049;
-} */
+.form-container-2 h2 {
+  text-align: center;
+}
+
+.form-container-2 label,
+.form-container-2 input[type="text"] {
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.form-container-2 input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form-container-2 input[type="number"]{
+  padding: 8px;
+  width:100%;
+  border: 1px solid #ccc;    
+  border-radius: 5px;
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+
+.form-container-2 input[type="date"]{
+  padding: 8px;
+  width:100%;
+  border: 1px solid #ccc;    
+  border-radius: 5px;
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
 
 
 .button-1 {
-  background-color: #EA4C89;
+  background-color: #030303;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -239,7 +269,7 @@ body {
 
 .button-1:hover,
 .button-1:focus {
-  background-color: #F082AC;
+  background-color: #9345a7;
 }
 select{
   padding: 5px;
@@ -247,7 +277,12 @@ select{
   width:100%;
   margin-bottom: 10px;
 }
+.checkbox{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
+/* Estilo de pie de pagina */
 footer{
   margin-top: 10px;
   position: relative;
@@ -295,7 +330,6 @@ footer .social_icon li a:hover
 }
 
 footer .menu li a
-
 {
   font-size: 1.2em;
   color: #fff;
