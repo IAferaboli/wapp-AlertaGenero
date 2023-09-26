@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-08-2023 a las 01:06:45
+-- Tiempo de generación: 27-09-2023 a las 01:32:58
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -35,7 +35,6 @@ CREATE TABLE `agresores` (
   `id_color` int(11) NOT NULL DEFAULT 1,
   `id_tatoo` int(11) NOT NULL,
   `id_cicatriz` int(11) NOT NULL,
-  `id_discap` int(11) NOT NULL,
   `alfanum` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -55,10 +54,10 @@ CREATE TABLE `altura` (
 --
 
 INSERT INTO `altura` (`id_altura`, `altura`) VALUES
-(1, 'Alto'),
-(2, 'Mediano'),
-(3, 'Bajo'),
-(4, 'N/N');
+(1, 'N/N'),
+(2, 'Alto'),
+(3, 'Mediano'),
+(4, 'Bajo');
 
 -- --------------------------------------------------------
 
@@ -68,17 +67,6 @@ INSERT INTO `altura` (`id_altura`, `altura`) VALUES
 
 CREATE TABLE `cicatrices` (
   `id_cicatriz` int(11) NOT NULL,
-  `detalle` text NOT NULL DEFAULT 'N/N'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `discapacidades`
---
-
-CREATE TABLE `discapacidades` (
-  `id_discap` int(11) NOT NULL,
   `detalle` text NOT NULL DEFAULT 'N/N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
@@ -154,6 +142,17 @@ INSERT INTO `pelos` (`id_color`, `color`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tatuajes`
+--
+
+CREATE TABLE `tatuajes` (
+  `id_tatoo` int(11) NOT NULL,
+  `detalle` text NOT NULL DEFAULT 'N/N'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipos_violencias`
 --
 
@@ -183,14 +182,11 @@ INSERT INTO `tipos_violencias` (`id_tipo`, `nombre`) VALUES
 
 CREATE TABLE `usuaries` (
   `id_usuarie` int(11) NOT NULL,
-  `dni` int(8) NOT NULL,
   `hashedni` text NOT NULL,
-  `nombre` text NOT NULL,
-  `nombre_autoperc` varchar(24) NOT NULL DEFAULT 'N/N',
-  `apellido` text NOT NULL,
   `fecnac` date NOT NULL,
   `celContacto` text NOT NULL,
-  `id_institucion` int(11) NOT NULL
+  `id_institucion` int(11) NOT NULL,
+  `atencionMed` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -205,7 +201,6 @@ ALTER TABLE `agresores`
   ADD KEY `alfanum` (`alfanum`(1024)),
   ADD KEY `altura` (`id_altura`),
   ADD KEY `cicatriz` (`id_cicatriz`),
-  ADD KEY `discapacidad` (`id_discap`),
   ADD KEY `colorpelo` (`id_color`);
 
 --
@@ -219,12 +214,6 @@ ALTER TABLE `altura`
 --
 ALTER TABLE `cicatrices`
   ADD PRIMARY KEY (`id_cicatriz`);
-
---
--- Indices de la tabla `discapacidades`
---
-ALTER TABLE `discapacidades`
-  ADD PRIMARY KEY (`id_discap`);
 
 --
 -- Indices de la tabla `instituciones`
@@ -245,6 +234,12 @@ ALTER TABLE `pelos`
   ADD PRIMARY KEY (`id_color`);
 
 --
+-- Indices de la tabla `tatuajes`
+--
+ALTER TABLE `tatuajes`
+  ADD PRIMARY KEY (`id_tatoo`);
+
+--
 -- Indices de la tabla `tipos_violencias`
 --
 ALTER TABLE `tipos_violencias`
@@ -255,7 +250,6 @@ ALTER TABLE `tipos_violencias`
 --
 ALTER TABLE `usuaries`
   ADD PRIMARY KEY (`id_usuarie`),
-  ADD KEY `dni` (`dni`),
   ADD KEY `institucion` (`id_institucion`);
 
 --
@@ -281,12 +275,6 @@ ALTER TABLE `cicatrices`
   MODIFY `id_cicatriz` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `discapacidades`
---
-ALTER TABLE `discapacidades`
-  MODIFY `id_discap` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `instituciones`
 --
 ALTER TABLE `instituciones`
@@ -305,6 +293,12 @@ ALTER TABLE `pelos`
   MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `tatuajes`
+--
+ALTER TABLE `tatuajes`
+  MODIFY `id_tatoo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `tipos_violencias`
 --
 ALTER TABLE `tipos_violencias`
@@ -314,7 +308,7 @@ ALTER TABLE `tipos_violencias`
 -- AUTO_INCREMENT de la tabla `usuaries`
 --
 ALTER TABLE `usuaries`
-  MODIFY `id_usuarie` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuarie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
@@ -326,8 +320,7 @@ ALTER TABLE `usuaries`
 ALTER TABLE `agresores`
   ADD CONSTRAINT `altura` FOREIGN KEY (`id_altura`) REFERENCES `altura` (`id_altura`),
   ADD CONSTRAINT `cicatriz` FOREIGN KEY (`id_cicatriz`) REFERENCES `cicatrices` (`id_cicatriz`),
-  ADD CONSTRAINT `colorpelo` FOREIGN KEY (`id_color`) REFERENCES `pelos` (`id_color`),
-  ADD CONSTRAINT `discapacidad` FOREIGN KEY (`id_discap`) REFERENCES `discapacidades` (`id_discap`);
+  ADD CONSTRAINT `colorpelo` FOREIGN KEY (`id_color`) REFERENCES `pelos` (`id_color`);
 
 --
 -- Filtros para la tabla `usuaries`
