@@ -5,7 +5,7 @@ require_once "conexion.php";
 class Usuarie extends Conexion
 {
 
-    public $id_usuarie, $dni, $hashedni, $nombre, $nombre_autoperc, $apellido, $fecnac, $celContacto, $id_institucion;
+    public $id_usuarie, $dni, $hashedni, $nombre, $nombre_autoperc, $apellido, $fecnac, $celContacto, $id_institucion, $atencionMed;
 
     //Hashear el dni (codificar el dni en hexadecimal)
     private function hashing($dni)
@@ -29,8 +29,8 @@ class Usuarie extends Conexion
 
         if (!$usuarie) {
             $this->conectar();
-            $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (dni, hashedni, nombre, nombre_autoperc, apellido, fecnac, celContacto, id_institucion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $prepare->bind_param("issssssi", $this->dni, $hashedni, $this->nombre, $this->nombre_autoperc, $this->apellido, $this->fecnac, $this->celContacto, $this->id_institucion);
+            $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (hashedni, fecnac, celContacto, id_institucion, atencionMed) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $prepare->bind_param("sssii",$hashedni, $this->fecnac, $this->celContacto, $this->id_institucion, $this->atencionMed);
             $prepare->execute();
         } else {
             return $usuarie;
