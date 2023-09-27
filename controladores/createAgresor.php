@@ -1,5 +1,6 @@
 <?php
 
+require_once "../models/agresores.php";
 require_once "../models/altura.php";
 require_once "../models/cicatrices.php";
 require_once "../models/pelos.php";
