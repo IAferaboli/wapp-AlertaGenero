@@ -39,6 +39,7 @@ require_once "../layout/head.view.php";
                                 </div>
                             <?php } ?>
                         </div>
+                        <br>
                         <div class="row">
                             <div>
                                 <h4>Color pelo</h4>
@@ -50,9 +51,18 @@ require_once "../layout/head.view.php";
                                 </div>
                             <?php } ?>
                         </div>
-
+                        <br>
+                        <div>
+                            <h4>Tatuajes</h4>
+                                <textarea rows="4" cols="50" name="tatuaje" placeholder="Descripción a detalle sobre tatuajes"></textarea>
+                        </div>
+                        <br>
+                        <div>
+                            <h4>cicatrices</h4>
+                                <textarea rows="4" cols="50" name="cicatriz" placeholder="Descripción a detalle sobre cicatriz"></textarea>
+                        </div>
                         <button class="button-1" type="submit">Siguiente</a></button>
-
+                        
                     </form>
                 </div>
             </div>
