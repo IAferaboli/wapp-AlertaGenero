@@ -22,7 +22,6 @@ if(isset($_POST['nombre-agresor']) || isset($_POST['apellido-agresor']) || isset
     $agresor->id_tatoo = $_POST['tatuaje'];
 
     $agresor->create();
-
 }
 
 
