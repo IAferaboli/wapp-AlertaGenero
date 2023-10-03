@@ -5,7 +5,7 @@ require_once "conexion.php";
 
 class Agresor extends Conexion {
 
-    public $id_agresor, $nombre, $apellido, $id_tatoo, $id_cicatriz, $alturaSeleccionada, $peloSeleccionado;
+    public $id_agresor, $nombre, $apellido, $id_altura, $id_pelo, $id_tatoo, $id_cicatriz, $alturaSeleccionada, $peloSeleccionado;
 
     
     public function codearagresor($nombre, $apellido){
@@ -21,7 +21,7 @@ class Agresor extends Conexion {
     public function create()
     {
         $this->conectar();
-        $prepare = mysqli_prepare($this->conect, "INSERT INTO agresores (nombre, apellido, id_altura, id_pelo, id_tatoo, id_cicatriz) VALUES (?, ?, ?, ?, ?)");
+        $prepare = mysqli_prepare($this->conect, "INSERT INTO agresores (nombre, apellido, id_altura, id_pelo, id_tatoo, id_cicatriz) VALUES (?, ?, ?, ?, ?, ?)");
         $prepare->bind_param("ssiiii", $this->nombre, $this->apellido, $this->alturaSeleccionada, $this->peloSeleccionado, $this->id_tatoo, $this->id_cicatriz);
         $prepare->execute();
     }

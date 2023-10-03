@@ -46,7 +46,7 @@ require_once "../layout/head.view.php";
                             <?php endforeach; ?>
                         </select>
                         <div class="checkbox">
-                            <input type="checkbox"> <strong>¿Necesitó atención medica?</strong></input><br>
+                            <input type="checkbox" name="atencionMed" value= 1> <strong>¿Necesitó atención medica?</strong></input><br>
                         </div>
                         <button class="button-1" type="submit"><a href="../controladores/createAgresor.php"> Siguiente</a></button>
                     </form>
