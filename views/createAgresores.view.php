@@ -54,12 +54,12 @@ require_once "../layout/head.view.php";
                         <br>
                         <div>
                             <h4>Tatuajes</h4>
-                                <textarea rows="4" cols="50" name="tatuaje" placeholder="Descripción a detalle sobre tatuajes"></textarea>
+                                <textarea rows="4" cols="50" name="tatuaje" placeholder="Descripción a detalle sobre tatuajes" maxlength="100"></textarea>
                         </div>
                         <br>
                         <div>
                             <h4>cicatrices</h4>
-                                <textarea rows="4" cols="50" name="cicatriz" placeholder="Descripción a detalle sobre cicatriz"></textarea>
+                                <textarea rows="4" cols="50" name="cicatriz" placeholder="Descripción a detalle sobre cicatriz" maxlength="100"></textarea>
                         </div>
                         <button class="button-1" type="submit">Siguiente</a></button>
                         
