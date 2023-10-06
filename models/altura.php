@@ -6,7 +6,7 @@ class Altura extends Conexion {
 
     public $altura, $id_altura;
 
-    public static function getAltura($id_altura){
+    public function getAltura($id_altura){
         $conexion = new Conexion();
         $conexion->conectar();
         $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM altura WHERE id_altura = ?");
@@ -16,7 +16,7 @@ class Altura extends Conexion {
         return $resultado->fetch_object(Altura::class);
     }
 
-    public static function getAlturas(){
+    public function getAlturas(){
         $conexion = new Conexion();
         $conexion->conectar();
         $prepare = mysqli_prepare($conexion->conect, "SELECT altura, id_altura FROM altura");

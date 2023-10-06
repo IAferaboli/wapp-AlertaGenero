@@ -29,8 +29,8 @@ class Usuarie extends Conexion
 
         if (!$usuarie) {
             $this->conectar();
-            $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (hashedni, fecnac, celContacto, id_institucion, atencionMed) VALUES (?, ?, ?, ?, ?)");
-            $prepare->bind_param("sssii", $hashedni, $this->fecnac, $this->celContacto, $this->id_institucion, $this->atencionMed);
+            $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (hashedni, fecnac, id_institucion, atencionMed) VALUES (?, ?, ?, ?)");
+            $prepare->bind_param("ssii", $hashedni, $this->fecnac, $this->id_institucion, $this->atencionMed);
             $prepare->execute();
         } else {
             return $usuarie;

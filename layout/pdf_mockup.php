@@ -15,7 +15,7 @@ class PDF extends FPDF {
     }
 
     function Footer(){
-        //Posición 15mm por encima del final
+        //Posición 25mm por encima del final
         $this->SetY(-25);
         //Set fuente
         $this->SetFont('Times', 'I', 10);
