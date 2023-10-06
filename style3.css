@@ -356,3 +356,6 @@ footer p
 
 
 
+textarea {
+  resize: none;
+}

@@ -21,8 +21,8 @@ class Agresor extends Conexion {
     public function create()
     {
         $this->conectar();
-        $prepare = mysqli_prepare($this->conect, "INSERT INTO agresores (nombre, apellido, id_altura, id_pelo, id_tatoo, id_cicatriz) VALUES (?, ?, ?, ?, ?)");
-        $prepare->bind_param("ssiiii", $this->nombre, $this->apellido, $this->alturaSeleccionada, $this->peloSeleccionado, $this->id_tatoo, $this->id_cicatriz);
+        $prepare = mysqli_prepare($this->conect, "INSERT INTO agresores (nombre, apellido, id_altura, id_color, id_tatoo, id_cicatriz) VALUES ( ?, ?, ?, ?, ?, ?)");
+        $prepare->bind_param("ssiiii", $this->nombre, $this->apellido, $this->id_altura, $this->id_color, $this->id_tatoo, $this->id_cicatriz);
         $prepare->execute();
     }
 
