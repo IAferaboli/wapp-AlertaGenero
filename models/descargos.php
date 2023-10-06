@@ -9,17 +9,6 @@ class Descargo extends Conexion
     public $id_descargo, $descargo, $id_modalidad, $id_tipo, $id_agresor; //$hashedni
 
 
-    // public function getUsuarie($hashedni)
-    // {
-    //     $conexion = new Conexion();
-    //     $conexion->conectar();
-    //     $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM usuaries WHERE hashedni = ?");
-    //     $prepare->bind_param("s", $this->hashedni);
-    //     $prepare->execute();
-    //     $resultado = $prepare->get_result();
-    //     return $resultado->fetch_object(Usuarie::class);
-    // }
-
     public function getAgresor()
     {
         $conexion = new Conexion();
@@ -31,12 +20,12 @@ class Descargo extends Conexion
         return $resultado->fetch_object(Agresor::class);
     }
 
-    public function getDescargo($id_descargo)
+    public static function getDescargo($id_descargo)
     {
         $conexion = new Conexion();
         $conexion->conectar();
         $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM descargo WHERE id_descargo = ?");
-        $prepare->bind_param("i", $this->id_descargo);
+        $prepare->bind_param("i", $id_descargo);
         $prepare->execute();
         $resultado = $prepare->get_result();
         return $resultado->fetch_object(Descargo::class);
@@ -46,7 +35,7 @@ class Descargo extends Conexion
     {
 
         //Obtener descargo
-        $descargo = $this->getDescargo($id_descargo);
+        $descargo = Descargo::getDescargo($id_descargo);
         
         //Guardo resultado de getAgresor
         $agresor= $descargo->getAgresor();
@@ -72,13 +61,13 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->Cell(35, 10, utf8_decode('Nombre: '. ), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Nombre: '. $_SESSION['nombre']), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Apellido: '), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Nombre autopercibido: '. $_SESSION['nombre_autoperc']), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Nombre autopercibido:'), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Apellido:'. $_SESSION['apellido']), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Celular: '), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Celular: '. $_SESSION['celContacto']), 0, 0, 'L', 0);
 
         $pdf->Ln();
         //Datos del agresor

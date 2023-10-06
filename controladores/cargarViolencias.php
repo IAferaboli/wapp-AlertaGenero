@@ -18,6 +18,8 @@ if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSelecci
 
     //$descargo->create();
 
+    //traer ultimo descargo creado e invocar método createPDF
+
 }
 
 
