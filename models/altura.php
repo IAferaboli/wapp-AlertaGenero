@@ -16,7 +16,7 @@ class Altura extends Conexion {
         return $resultado->fetch_object(Altura::class);
     }
 
-    public function getAlturas(){
+    public static function getAlturas(){
         $conexion = new Conexion();
         $conexion->conectar();
         $prepare = mysqli_prepare($conexion->conect, "SELECT altura, id_altura FROM altura");

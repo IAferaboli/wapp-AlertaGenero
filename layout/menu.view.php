@@ -24,11 +24,12 @@
                 <div></div>
             </div>
         </div>
-    </header>
-    <script>
-        hamburger = document.querySelector(".hamburger");
-        nav = document.querySelector("nav");
-        hamburger.onclick = function() {
-            nav.classList.toggle("active");
-        }
-    </script>
+
+</header>
+<script>
+    hamburger = document.querySelector(".hamburger");
+    nav = document.querySelector("nav");
+    hamburger.onclick = function() {
+        nav.classList.toggle("active");
+    }
+</script>

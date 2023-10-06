@@ -5,7 +5,6 @@ require_once "../models/altura.php";
 require_once "../models/cicatrices.php";
 require_once "../models/pelos.php";
 require_once "../models/tatuajes.php";
-require_once "../models/agresores.php";
 $alturas = Altura::getAlturas();
 $pelos = Colorpelo::getPelos();
 
