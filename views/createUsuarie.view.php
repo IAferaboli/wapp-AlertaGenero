@@ -46,6 +46,7 @@ require_once "../layout/head.view.php";
                             <input type="checkbox" name="atencionMed[]" value="0"> <strong>Necesité atención medica</strong></input><br>
                         </div>
                         <button class="button-1" type="submit">Siguiente</button>
+                        
                     </form>
                 </div>
             </div>

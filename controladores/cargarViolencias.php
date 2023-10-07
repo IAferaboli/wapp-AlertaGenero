@@ -5,7 +5,7 @@ require_once "../models/modalidades.php";
 require_once "../models/tipos_violencias.php";
 
 $modalidades = Modalidades::getModalidades();
-$violencias = Tipos_violencia::getTipos();
+$tipos = Tipos_violencia::getTipos();
 
 
 //CARGAR VIOLENCIAS
