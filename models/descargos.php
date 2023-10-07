@@ -6,7 +6,16 @@ require_once '../layout/pdf_mockup.php';
 class Descargo extends Conexion
 {
 
-    public $id_descargo, $descargo, $id_modalidad, $id_tipo, $id_agresor; //$hashedni
+    public $id_descargo, $id_modalidad, $id_tipo, $id_agresor, $descargo;
+
+    public function create()
+    {
+        $this->conectar();
+        $prepare = mysqli_prepare($this->conect, "INSERT INTO descargos (id_modalidad, id_tipo, id_agresor, descargo) VALUES (?, ?, ?, ?)");
+        $prepare->bind_param("iiis", $this->id_modalidad, $this->id_tipo, $this->id_agresor, $this->descargo);
+        $prepare->execute();
+    }
+
 
 
     public function getAgresor()
@@ -24,7 +33,7 @@ class Descargo extends Conexion
     {
         $conexion = new Conexion();
         $conexion->conectar();
-        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM descargo WHERE id_descargo = ?");
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM descargos WHERE id_descargo = ?");
         $prepare->bind_param("i", $id_descargo);
         $prepare->execute();
         $resultado = $prepare->get_result();

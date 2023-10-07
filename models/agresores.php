@@ -5,17 +5,17 @@ require_once "conexion.php";
 
 class Agresor extends Conexion {
 
-    public $id_agresor, $nombre, $apellido, $id_altura, $id_color, $id_tatoo, $id_cicatriz;
+    public $id_agresor, $nombre, $apellido, $id_altura, $id_color, $tatuaje, $cicatriz;
 
     
-    public function codearagresor($nombre, $apellido){
-        $name = substr($nombre, 0, 3);
-        $apell = substr($apellido, -3, 3);
+    // public function codearagresor($nombre, $apellido){
+    //     $name = substr($nombre, 0, 3);
+    //     $apell = substr($apellido, -3, 3);
 
-        $alfanum = $name . $apell;
+    //     $alfanum = $name . $apell;
 
-        return $alfanum;
-    }
+    //     return $alfanum;
+    // }
 
     public function getPelo(){
         $conexion = new Conexion();
@@ -30,7 +30,7 @@ class Agresor extends Conexion {
     public function getAltura(){
         $conexion = new Conexion();
         $conexion->conectar();
-        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM altura WHERE id_altura = ?");
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM alturas WHERE id_altura = ?");
         $prepare->bind_param("i", $this->id_altura);
         $prepare->execute();
         $resultado = $prepare->get_result();
@@ -41,8 +41,8 @@ class Agresor extends Conexion {
     public function create()
     {
         $this->conectar();
-        $prepare = mysqli_prepare($this->conect, "INSERT INTO agresores (nombre, apellido, id_altura, id_color, id_tatoo, id_cicatriz) VALUES (?, ?, ?, ?, ?, ?)");
-        $prepare->bind_param("ssiiii", $this->nombre, $this->apellido, $this->id_altura, $this->id_color, $this->id_tatoo, $this->id_cicatriz);
+        $prepare = mysqli_prepare($this->conect, "INSERT INTO agresores (nombre, apellido, id_altura, id_color, tatuaje, cicatriz) VALUES (?, ?, ?, ?, ?, ?)");
+        $prepare->bind_param("ssiiss", $this->nombre, $this->apellido, $this->id_altura, $this->id_color, $this->tatuaje, $this->cicatriz);
         $prepare->execute();
     }
 
