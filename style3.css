@@ -131,6 +131,13 @@ header .header-right .hamburger div {
   
 }
 
+.form-vista-3{
+  min-height : 100vh; 
+  background: rgb(85, 95, 231);
+  /* background: linear-gradient(141deg, rgb(177, 40, 40) 0%, rgb(160, 11, 11) 100%);  */
+  background: linear-gradient(141deg, rgb(77, 109, 168) 0%, rgb(53, 62, 143) 100%);
+  
+}
 
 
 body {
@@ -237,7 +244,26 @@ body {
   margin-bottom: 10px;
 }
 
+.form-container-3 {
+  /* background-color:rgb(168, 51, 51) ; */
+  background-color: rgb(14, 25, 189);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  
+}
 
+.form-container-3 h2 {
+  text-align: center;
+}
+
+.form-container-3 label,
+.form-container-3 input[type="text"] {
+  display: block;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
 
 .button-1 {
   background-color: #030303;
