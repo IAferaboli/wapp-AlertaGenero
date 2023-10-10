@@ -23,4 +23,4 @@ if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSelecci
 }
 
 
-require_once "../Views/createDescargo.view.php";
+require_once "../views/createDescargo.view.php";
