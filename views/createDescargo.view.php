@@ -22,10 +22,13 @@ require_once "../layout/head.view.php";
                             <div>
                                 <h4>Tipo de violencia</h4>
                             </div>
+                            <br>
                             <?php foreach ($tipos as $tipo) { ?>
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
+                                    <label>
                                     <input type="radio" name="tipo_violenciaSeleccionada[]" value="<?= $tipo->id_tipo ?>"><?= $tipo->nombre ?>
+                                    </label>
                                 </div>
                             <?php } ?>
                         </div>
@@ -34,10 +37,15 @@ require_once "../layout/head.view.php";
                             <div>
                                 <h4>Modalidad de violencia</h4>
                             </div>
+                            <br>
                             <?php foreach ($modalidades as $modalidad) { ?>
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
+                                    <label>
                                     <input type="radio" name="modalidadSeleccionada[]" value="<?= $modalidad->id_modalidad ?>"><?= $modalidad->nombre ?>
+                                
+                                    </label>
+                                    <!-- <input type="radio" name="modalidadSeleccionada[]" value="<?= $modalidad->id_modalidad ?>"><?= $modalidad->nombre ?> -->
                                 </div>
                             <?php } ?>
                         </div>
