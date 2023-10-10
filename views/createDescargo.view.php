@@ -52,7 +52,7 @@ require_once "../layout/head.view.php";
                         <br>
                         <div>
                             <h4>Descripción del hecho</h4>
-                            <textarea rows="6" cols="50" name="tatuaje" placeholder="Descripción del hecho" maxlength="500"></textarea>
+                            <textarea rows="6" cols="50" name="descargo" placeholder="Descripción del hecho" maxlength="500"></textarea>
                         </div>
                         <br>
                         <button class="button-1" type="submit">Siguiente</a></button>
