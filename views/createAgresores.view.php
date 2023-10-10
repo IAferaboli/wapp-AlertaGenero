@@ -35,7 +35,9 @@ require_once "../layout/head.view.php";
                             <?php foreach ($alturas as $altura) { ?>
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
-                                    <input type="radio" name="alturaSeleccionada[]" value="<?= $altura->id_altura ?>"><?= $altura->altura ?>
+                                    <label>
+                                        <input type="radio" name="alturaSeleccionada[]" value="<?= $altura->id_altura ?>"><?= $altura->altura ?>
+                                    </label>
                                 </div>
                             <?php } ?>
                         </div>
@@ -47,22 +49,24 @@ require_once "../layout/head.view.php";
                             <?php foreach ($pelos as $pelo) { ?>
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
-                                    <input type="radio" name="peloSeleccionado[]" value="<?= $pelo->id_color ?>"><?= $pelo->color ?>
+                                    <label>
+                                        <input type="radio" name="peloSeleccionado[]" value="<?= $pelo->id_color ?>"><?= $pelo->color ?>
+                                    </label>
                                 </div>
                             <?php } ?>
                         </div>
                         <br>
                         <div>
                             <h4>Tatuajes</h4>
-                                <textarea rows="4" cols="50" name="tatuaje" placeholder="Descripción a detalle sobre tatuajes" maxlength="100"></textarea>
+                            <textarea rows="4" cols="50" name="tatuaje" placeholder="Descripción a detalle sobre tatuajes" maxlength="100"></textarea>
                         </div>
                         <br>
                         <div>
                             <h4>cicatrices</h4>
-                                <textarea rows="4" cols="50" name="cicatriz" placeholder="Descripción a detalle sobre cicatriz" maxlength="100"></textarea>
+                            <textarea rows="4" cols="50" name="cicatriz" placeholder="Descripción a detalle sobre cicatriz" maxlength="100"></textarea>
                         </div>
                         <button class="button-1" type="submit">Siguiente</a></button>
-                        
+
                     </form>
                 </div>
             </div>
