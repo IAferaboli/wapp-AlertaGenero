@@ -72,7 +72,7 @@ require_once "../layout/head.view.php";
                             
                             $('#apellido').keypress(function(e) {
                                 if (e.keyCode == 13) {
-                                    e.preventDefault();
+                                      e.preventDefault();
                                     $('#fecnac').focus();
                                 }
                             });
