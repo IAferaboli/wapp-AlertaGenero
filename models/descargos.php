@@ -12,8 +12,8 @@ class Descargo extends Conexion
     {
         $this->conectar();
         $prepare = mysqli_prepare($this->conect, "INSERT INTO descargos (id_usuarie, id_modalidad, id_tipo, id_agresor, descargo, fecha) VALUES (?, ?, ?, ?, ?, ?)");
-        $this->fecha = date('Y-m-d');
-        $this->id_usuarie = $_SESSION['id_usuarie'];
+        // $this->fecha = date('Y-m-d');
+        // $this->id_usuarie = $_SESSION['id_usuarie'];
         $prepare->bind_param("iiiiss", $this->id_usuarie, $this->id_modalidad, $this->id_tipo, $this->id_agresor, $this->descargo, $this->fecha);
         $prepare->execute();
     }

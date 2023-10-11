@@ -12,11 +12,14 @@ $tipos = Tipos_violencia::getTipos();
 
 if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSeleccionada']) || isset($_POST['descargo'])){
     $descargo = new Descargo;
+    // $descargo->id_usuarie = $_SESSION['id_usuarie'];
     $descargo->id_modalidad = $_POST['modalidadSeleccionada'];
     $descargo->id_tipo = $_POST['tipo_violenciaSeleccionada'];
+    // $descargo->id_agresor = $_SESSION['id_agresor'];
     $descargo->descargo = $_POST['descargo'];
-
-    //$descargo->create();
+    // $descargo->fecha = date('Y-m-d');
+    
+    $descargo->create();
 
     //traer ultimo descargo creado e invocar método createPDF
 
