@@ -9,10 +9,10 @@
                         <a href="../controladores/createUsuarie.php">Inicio</a>
                     </li>
                     <li>
-                        <a href="../controladores/createUsuarie.php">Capacitación</a>
+                        <a href="http://villaconstitucion.gob.ar/hcm/escaneando-violencia-de-genero/">Capacitación</a>
                     </li>
                     <li>
-                        <a href="../controladores/createUsuarie.php">Politica de privacidad</a>
+                        <a href="">Politica de privacidad</a>
                     </li>
                 </ul>
             </nav>
