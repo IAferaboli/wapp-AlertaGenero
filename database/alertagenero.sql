@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2023 a las 01:32:58
+-- Tiempo de generación: 11-10-2023 a las 02:31:03
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -33,27 +33,26 @@ CREATE TABLE `agresores` (
   `apellido` text NOT NULL DEFAULT '\'N/N\'',
   `id_altura` int(11) NOT NULL DEFAULT 4,
   `id_color` int(11) NOT NULL DEFAULT 1,
-  `id_tatoo` int(11) NOT NULL,
-  `id_cicatriz` int(11) NOT NULL,
-  `alfanum` text NOT NULL
+  `tatuaje` text NOT NULL DEFAULT 'N/N',
+  `cicatriz` text NOT NULL DEFAULT 'N/N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `altura`
+-- Estructura de tabla para la tabla `alturas`
 --
 
-CREATE TABLE `altura` (
+CREATE TABLE `alturas` (
   `id_altura` int(11) NOT NULL,
   `altura` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `altura`
+-- Volcado de datos para la tabla `alturas`
 --
 
-INSERT INTO `altura` (`id_altura`, `altura`) VALUES
+INSERT INTO `alturas` (`id_altura`, `altura`) VALUES
 (1, 'N/N'),
 (2, 'Alto'),
 (3, 'Mediano'),
@@ -62,12 +61,17 @@ INSERT INTO `altura` (`id_altura`, `altura`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cicatrices`
+-- Estructura de tabla para la tabla `descargos`
 --
 
-CREATE TABLE `cicatrices` (
-  `id_cicatriz` int(11) NOT NULL,
-  `detalle` text NOT NULL DEFAULT 'N/N'
+CREATE TABLE `descargos` (
+  `id_descargo` int(11) NOT NULL,
+  `id_usuarie` int(11) NOT NULL,
+  `id_modalidad` int(11) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
+  `id_agresor` int(11) NOT NULL,
+  `descargo` text NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -142,17 +146,6 @@ INSERT INTO `pelos` (`id_color`, `color`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tatuajes`
---
-
-CREATE TABLE `tatuajes` (
-  `id_tatoo` int(11) NOT NULL,
-  `detalle` text NOT NULL DEFAULT 'N/N'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `tipos_violencias`
 --
 
@@ -184,10 +177,19 @@ CREATE TABLE `usuaries` (
   `id_usuarie` int(11) NOT NULL,
   `hashedni` text NOT NULL,
   `fecnac` date NOT NULL,
-  `celContacto` text NOT NULL,
   `id_institucion` int(11) NOT NULL,
-  `atencionMed` int(1) NOT NULL DEFAULT 0
+  `atencionMed` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuaries`
+--
+
+INSERT INTO `usuaries` (`id_usuarie`, `hashedni`, `fecnac`, `id_institucion`, `atencionMed`) VALUES
+(4, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', '1990-12-21', 3, 1),
+(5, '50edfd688ab49936bbe48f10aaa5fc546782ea9961f9a2c88044725d39a5de22', '1992-07-11', 1, 1),
+(6, '1db26350a1f2dd4d94f50df4bd97bb087f4903df33e600bf0061e523eda0fe65', '1990-01-12', 1, 0),
+(7, 'e723c6d9df1036fc101c3e02a9fb4c46d30c64406290911f9e96f174ebea60e9', '2023-10-05', 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -198,22 +200,24 @@ CREATE TABLE `usuaries` (
 --
 ALTER TABLE `agresores`
   ADD PRIMARY KEY (`id_agresor`),
-  ADD KEY `alfanum` (`alfanum`(1024)),
   ADD KEY `altura` (`id_altura`),
-  ADD KEY `cicatriz` (`id_cicatriz`),
   ADD KEY `colorpelo` (`id_color`);
 
 --
--- Indices de la tabla `altura`
+-- Indices de la tabla `alturas`
 --
-ALTER TABLE `altura`
+ALTER TABLE `alturas`
   ADD PRIMARY KEY (`id_altura`);
 
 --
--- Indices de la tabla `cicatrices`
+-- Indices de la tabla `descargos`
 --
-ALTER TABLE `cicatrices`
-  ADD PRIMARY KEY (`id_cicatriz`);
+ALTER TABLE `descargos`
+  ADD PRIMARY KEY (`id_descargo`),
+  ADD UNIQUE KEY `id_usuarie` (`id_usuarie`),
+  ADD KEY `agresor` (`id_agresor`),
+  ADD KEY `modalidad` (`id_modalidad`),
+  ADD KEY `tipo` (`id_tipo`);
 
 --
 -- Indices de la tabla `instituciones`
@@ -232,12 +236,6 @@ ALTER TABLE `modalidades`
 --
 ALTER TABLE `pelos`
   ADD PRIMARY KEY (`id_color`);
-
---
--- Indices de la tabla `tatuajes`
---
-ALTER TABLE `tatuajes`
-  ADD PRIMARY KEY (`id_tatoo`);
 
 --
 -- Indices de la tabla `tipos_violencias`
@@ -263,16 +261,16 @@ ALTER TABLE `agresores`
   MODIFY `id_agresor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `altura`
+-- AUTO_INCREMENT de la tabla `alturas`
 --
-ALTER TABLE `altura`
+ALTER TABLE `alturas`
   MODIFY `id_altura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `cicatrices`
+-- AUTO_INCREMENT de la tabla `descargos`
 --
-ALTER TABLE `cicatrices`
-  MODIFY `id_cicatriz` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `descargos`
+  MODIFY `id_descargo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `instituciones`
@@ -293,12 +291,6 @@ ALTER TABLE `pelos`
   MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `tatuajes`
---
-ALTER TABLE `tatuajes`
-  MODIFY `id_tatoo` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `tipos_violencias`
 --
 ALTER TABLE `tipos_violencias`
@@ -308,7 +300,7 @@ ALTER TABLE `tipos_violencias`
 -- AUTO_INCREMENT de la tabla `usuaries`
 --
 ALTER TABLE `usuaries`
-  MODIFY `id_usuarie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuarie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
@@ -318,9 +310,17 @@ ALTER TABLE `usuaries`
 -- Filtros para la tabla `agresores`
 --
 ALTER TABLE `agresores`
-  ADD CONSTRAINT `altura` FOREIGN KEY (`id_altura`) REFERENCES `altura` (`id_altura`),
-  ADD CONSTRAINT `cicatriz` FOREIGN KEY (`id_cicatriz`) REFERENCES `cicatrices` (`id_cicatriz`),
+  ADD CONSTRAINT `altura` FOREIGN KEY (`id_altura`) REFERENCES `alturas` (`id_altura`),
   ADD CONSTRAINT `colorpelo` FOREIGN KEY (`id_color`) REFERENCES `pelos` (`id_color`);
+
+--
+-- Filtros para la tabla `descargos`
+--
+ALTER TABLE `descargos`
+  ADD CONSTRAINT `agresor` FOREIGN KEY (`id_agresor`) REFERENCES `agresores` (`id_agresor`),
+  ADD CONSTRAINT `modalidad` FOREIGN KEY (`id_modalidad`) REFERENCES `modalidades` (`id_modalidad`),
+  ADD CONSTRAINT `tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipos_violencias` (`id_tipo`),
+  ADD CONSTRAINT `usuarie` FOREIGN KEY (`id_usuarie`) REFERENCES `usuaries` (`id_usuarie`);
 
 --
 -- Filtros para la tabla `usuaries`
