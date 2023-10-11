@@ -22,6 +22,7 @@ if(isset($_POST['dni']) || isset($_POST['nombre']) || isset($_POST['nombre_autop
     
     $usuarie->cargar_usuarie();
 
+    $_SESSION['id_usuarie'] = $_GET['id_usuarie'];
     $_SESSION['nombre'] = $_POST['nombre'];
     $_SESSION['nombre_autoperc'] = $_POST['nombre_autoperc'];
     $_SESSION['apellido'] = $_POST['apellido'];
