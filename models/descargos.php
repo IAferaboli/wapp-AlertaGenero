@@ -6,13 +6,14 @@ require_once '../layout/pdf_mockup.php';
 class Descargo extends Conexion
 {
 
-    public $id_descargo, $id_modalidad, $id_tipo, $id_agresor, $descargo;
+    public $id_descargo, $id_usuarie, $id_modalidad, $id_tipo, $id_agresor, $descargo, $fecha;
 
     public function create()
     {
         $this->conectar();
-        $prepare = mysqli_prepare($this->conect, "INSERT INTO descargos (id_modalidad, id_tipo, id_agresor, descargo) VALUES (?, ?, ?, ?)");
-        $prepare->bind_param("iiis", $this->id_modalidad, $this->id_tipo, $this->id_agresor, $this->descargo);
+        $prepare = mysqli_prepare($this->conect, "INSERT INTO descargos (id_usuarie, id_modalidad, id_tipo, id_agresor, descargo, fecha) VALUES (?, ?, ?, ?, ?, ?)");
+        $this->fecha= date('Y-m-d');
+        $prepare->bind_param("iiiiss", $this->id_usuarie, $this->id_modalidad, $this->id_tipo, $this->id_agresor, $this->descargo, $this->fecha);
         $prepare->execute();
     }
 
