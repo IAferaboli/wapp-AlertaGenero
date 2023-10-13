@@ -32,8 +32,16 @@ class Usuarie extends Conexion
             $prepare = mysqli_prepare($this->conect, "INSERT INTO usuaries (hashedni, fecnac, id_institucion, atencionMed) VALUES (?, ?, ?, ?)");
             $prepare->bind_param("ssii", $hashedni, $this->fecnac, $this->id_institucion, $this->atencionMed);
             $prepare->execute();
+
+            $ultimo_id = mysqli_insert_id($this->conect);
+
+            // Obtener el ID del usarie recién creado
+            $_SESSION['id_usuarie'] = $ultimo_id;
         } else {
-            return $usuarie;
+
+            // Guardar el ID del usuarie en la sesión
+            $_SESSION['id_usuarie'] = $usuarie->id_usuarie;
+
         }
     }
 

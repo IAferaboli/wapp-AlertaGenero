@@ -2,6 +2,7 @@
 
 require_once "conexion.php";
 require_once '../layout/pdf_mockup.php';
+session_start();
 
 class Descargo extends Conexion
 {
@@ -12,8 +13,9 @@ class Descargo extends Conexion
     {
         $this->conectar();
         $prepare = mysqli_prepare($this->conect, "INSERT INTO descargos (id_usuarie, id_modalidad, id_tipo, id_agresor, descargo, fecha) VALUES (?, ?, ?, ?, ?, ?)");
-        // $this->fecha = date('Y-m-d');
-        // $this->id_usuarie = $_SESSION['id_usuarie'];
+        $this->fecha = date('Y-m-d');
+        $this->id_usuarie = $_SESSION['id_usuarie'];
+        $this->id_agresor = $_SESSION['id_agresor'];
         $prepare->bind_param("iiiiss", $this->id_usuarie, $this->id_modalidad, $this->id_tipo, $this->id_agresor, $this->descargo, $this->fecha);
         $prepare->execute();
     }
@@ -99,9 +101,9 @@ class Descargo extends Conexion
         $pdf->Ln();
         $pdf->Cell(35, 10, utf8_decode('Color de pelo: '.$agresor->getPelo()->detalle), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Tatuaje: '), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Tatuaje: '.$agresor->tatuaje), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(190, 10, utf8_decode('Cicatriz: '), 0, 0, 'L', 0);
+        $pdf->Cell(190, 10, utf8_decode('Cicatriz: '. $agresor->cicatriz), 0, 0, 'L', 0);
 
         $pdf->Ln();
         //Modalidad de violencia

@@ -2,12 +2,10 @@
 
 require_once "../models/agresores.php";
 require_once "../models/altura.php";
-// require_once "../models/cicatrices.php";
 require_once "../models/pelos.php";
-// require_once "../models/tatuajes.php";
 $alturas = Altura::getAlturas();
 $pelos = Colorpelo::getPelos();
-
+session_start();
 
 //CARGAR AGRESOR
 
@@ -19,10 +17,8 @@ if(isset($_POST['nombre-agresor']) || isset($_POST['apellido-agresor']) || isset
     $agresor->id_color = $_POST['peloSeleccionado'];
     $agresor->tatuaje = $_POST['tatuaje'];
     $agresor->cicatriz = $_POST['cicatriz'];
-
+    
     $agresor->create();
-
-    // $_SESSION['id_agresor'] = $_GET['id_agresor'];
 
     header("Location: ../controladores/cargarViolencias.php");
 }

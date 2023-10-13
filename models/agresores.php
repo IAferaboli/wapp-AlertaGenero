@@ -44,6 +44,12 @@ class Agresor extends Conexion {
         $prepare = mysqli_prepare($this->conect, "INSERT INTO agresores (nombre, apellido, id_altura, id_color, tatuaje, cicatriz) VALUES (?, ?, ?, ?, ?, ?)");
         $prepare->bind_param("ssiiss", $this->nombre, $this->apellido, $this->id_altura, $this->id_color, $this->tatuaje, $this->cicatriz);
         $prepare->execute();
+    
+        $ultimo_id = mysqli_insert_id($this->conect);
+      
+        // Obtener el ID del agresor recién creado
+        $_SESSION['id_agresor'] = $ultimo_id;
+   
     }
-
+    
 }
