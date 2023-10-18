@@ -2,6 +2,13 @@
 
 require_once "conexion.php";
 require_once '../layout/pdf_mockup.php';
+require_once 'agresores.php';
+require_once 'modalidades.php';
+require_once 'tipos_violencias.php';
+require_once 'altura.php';
+require_once 'pelos.php';
+
+
 session_start();
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
@@ -19,9 +26,14 @@ class Descargo extends Conexion
         $this->id_agresor = $_SESSION['id_agresor'];
         $prepare->bind_param("iiiiss", $this->id_usuarie, $this->id_modalidad, $this->id_tipo, $this->id_agresor, $this->descargo, $this->fecha);
         $prepare->execute();
+
+        return Descargo::getDescargo($prepare->insert_id);
+
+        // $ultimo_id = mysqli_insert_id($this->conect);
+      
+        // // Obtener el ID del agresor recién creado
+        // $_SESSION['id_descargo'] = $ultimo_id;
     }
-
-
 
     public function getAgresor()
     {
@@ -32,6 +44,27 @@ class Descargo extends Conexion
         $prepare->execute();
         $resultado = $prepare->get_result();
         return $resultado->fetch_object(Agresor::class);
+    }
+
+    public function getModalidad()
+    {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM modalidades WHERE id_modalidad = ?");
+        $prepare->bind_param("i", $this->id_modalidad);
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado->fetch_object(Modalidades::class);
+    }
+
+    public function getTipo(){
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM tipos_violencias WHERE id_tipo = ?");
+        $prepare->bind_param("i", $this->id_tipo);
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado->fetch_object(Tipos_violencia::class);
     }
 
     public static function getDescargo($id_descargo)
@@ -45,14 +78,22 @@ class Descargo extends Conexion
         return $resultado->fetch_object(Descargo::class);
     }
 
-    public static function generatePDF($id_descargo)
+    public function generatePDF()
     {
 
         //Obtener descargo
-        $descargo = Descargo::getDescargo($id_descargo);
+        // $descargo = Descargo::getDescargo($_SESSION['id_descargo']);
         
         //Guardo resultado de getAgresor
-        $agresor= $descargo->getAgresor();
+        $agresor= $this->getAgresor();
+
+        //Guardo resultado de getModalidad
+        $modalidad= $this->getModalidad();
+
+        //Guardo resultado de getTipos
+        $tipo = $this->getTipo();
+
+
 
         $pdf = new PDF();
         $pdf->AddPage();
@@ -117,7 +158,7 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->Cell(35, 10, utf8_decode('Modalidad de Violencia sufrida: '), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Modalidad de Violencia sufrida: '. $this->getModalidad()->nombre), 0, 0, 'L', 0);
 
         $pdf->Ln();
         //Tipo de violencia
@@ -130,7 +171,7 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->Cell(35, 10, utf8_decode('Tipo de Violencia sufrida: '), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Tipo de Violencia sufrida: '. $this->getTipo()->nombre), 0, 0, 'L', 0);
 
         $pdf->Ln();
         //Relato de lo ocurrido
@@ -143,8 +184,8 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->MultiCell(190, 8, utf8_decode('Desarollo de lo ocurrido: '), 0, 'L', 0);
+        $pdf->MultiCell(190, 8, utf8_decode('Desarollo de lo ocurrido: '. $this->descargo), 0, 'L', 0);
 
-        $pdf->Output('I', date('dmY') . '_Descargo' . $descargo->id_descargo . '.pdf');
+        $pdf->Output('D', date('dmY') . '_Descargo' . $this->id_descargo . '.pdf');
     }
 }

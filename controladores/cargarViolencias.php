@@ -17,9 +17,11 @@ if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSelecci
     $descargo->descargo = $_POST['descargo'];
 
     
-    $descargo->create();
+    $descargoCreado = $descargo->create();
 
-    //traer ultimo descargo creado e invocar método createPDF
+    $descargoCreado->generatePDF();
+
+    header("Location: ../controladores/descargoPDF.php");
 
 }
 
