@@ -20,9 +20,7 @@ if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSelecci
     $descargoCreado = $descargo->create();
 
     $descargoCreado->generatePDF();
-
-    header("Location: ../controladores/descargoPDF.php");
-
+    session_destroy();
 }
 
 

@@ -21,6 +21,6 @@ class PDF extends FPDF {
         $this->SetFont('Times', 'I', 10);
         $this->MultiCell(190, 8, utf8_decode('Descargo de Violencia realizado a través de Alerta Género. | Información Privada a la que Ud. y sólo Ud. tiene acceso.'), 0, 'C', 0);
         //Numeración de pag
-        $this->Cell(0, 10, utf8_decode('Pág.'). $this->PageNo().'/{nb}', 0,0, 'C');
+        $this->Cell(0, 10, utf8_decode('Pág.').$this->PageNo().'/{nb}',0,0,'C');
     }
 }

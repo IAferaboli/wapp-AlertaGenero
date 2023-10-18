@@ -29,10 +29,6 @@ class Descargo extends Conexion
 
         return Descargo::getDescargo($prepare->insert_id);
 
-        // $ultimo_id = mysqli_insert_id($this->conect);
-      
-        // // Obtener el ID del agresor recién creado
-        // $_SESSION['id_descargo'] = $ultimo_id;
     }
 
     public function getAgresor()
@@ -80,20 +76,9 @@ class Descargo extends Conexion
 
     public function generatePDF()
     {
-
-        //Obtener descargo
-        // $descargo = Descargo::getDescargo($_SESSION['id_descargo']);
         
         //Guardo resultado de getAgresor
         $agresor= $this->getAgresor();
-
-        //Guardo resultado de getModalidad
-        $modalidad= $this->getModalidad();
-
-        //Guardo resultado de getTipos
-        $tipo = $this->getTipo();
-
-
 
         $pdf = new PDF();
         $pdf->AddPage();
@@ -185,7 +170,10 @@ class Descargo extends Conexion
         $pdf->Ln();
 
         $pdf->MultiCell(190, 8, utf8_decode('Desarollo de lo ocurrido: '. $this->descargo), 0, 'L', 0);
+       
+        $filename = date('dmY') . '_Descargo_' . $this->id_descargo . '.pdf';
+        $ruta_archivo = "../temp/$filename";
 
-        $pdf->Output('D', date('dmY') . '_Descargo' . $this->id_descargo . '.pdf');
+        $pdf->Output('F', $ruta_archivo, true);
     }
 }
