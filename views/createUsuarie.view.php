@@ -43,7 +43,7 @@ require_once "../layout/head.view.php";
                             <?php endforeach; ?>
                         </select>
                         <div class="checkbox">
-                            <input type="checkbox" name="atencionMed[]" value="0"> <strong>Necesité atención medica</strong></input><br>
+                            <label> <input type="checkbox" name="atencionMed[]" value="0"> <strong>Necesité atención medica</strong></input></label>
                         </div>
                         <button class="button-1" type="submit">Siguiente</button>
 
@@ -69,14 +69,14 @@ require_once "../layout/head.view.php";
                                     $('#apellido').focus();
                                 }
                             });
-                            
+
                             $('#apellido').keypress(function(e) {
                                 if (e.keyCode == 13) {
-                                      e.preventDefault();
+                                    e.preventDefault();
                                     $('#fecnac').focus();
                                 }
                             });
-                            
+
                             $('#fecnac').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();
@@ -89,28 +89,27 @@ require_once "../layout/head.view.php";
                         <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
 
                         <script type="text/javascript">
-                           
-                           $('#dni').keypress(function(e) {
+                            $('#dni').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();
                                     $('#nombre').focus();
                                 }
                             });
-                           
+
                             $('#nombre').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();
                                     $('#nombre_autoperc').focus();
                                 }
                             });
-                            
+
                             $('#nombre_autoperc').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();
                                     $('#apellido').focus();
                                 }
                             });
-                            
+
                             $('#apellido').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();
@@ -124,7 +123,6 @@ require_once "../layout/head.view.php";
                                     $('#celContacto').focus();
                                 }
                             });
-                      
                         </script>
 
                     </form>

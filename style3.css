@@ -61,6 +61,8 @@ nav ul li a {
   transition: 0.2s;
   text-shadow: 2px 2px 5px rgb(65, 26, 88);
 }
+
+
 /* Animacion al pasar por encima */
 nav ul li a:hover{
   cursor: pointer;
@@ -384,3 +386,4 @@ footer p
 textarea {
   resize: none;
 }
+
