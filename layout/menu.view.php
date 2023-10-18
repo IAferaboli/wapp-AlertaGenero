@@ -14,11 +14,15 @@
                     <li>
                         <a href="">Politica de privacidad</a>
                     </li>
+                    <li>
+                        <a href="../controladores/login.php" class="login">Login</a>
+                    </li>
                 </ul>
             </nav>
         </div>
         <div class="header-right">
             <div class="hamburger">
+                <div></div>
                 <div></div>
                 <div></div>
                 <div></div>
