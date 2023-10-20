@@ -8,6 +8,15 @@ require_once 'tipos_violencias.php';
 require_once 'altura.php';
 require_once 'pelos.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require '../PHPMailer-master/src/Exception.php';
+require '../PHPMailer-master/src/PHPMailer.php';
+require '../PHPMailer-master/src/SMTP.php';
+
+
 
 session_start();
 date_default_timezone_set('America/Argentina/Buenos_Aires');
@@ -28,7 +37,6 @@ class Descargo extends Conexion
         $prepare->execute();
 
         return Descargo::getDescargo($prepare->insert_id);
-
     }
 
     public function getAgresor()
@@ -53,7 +61,8 @@ class Descargo extends Conexion
         return $resultado->fetch_object(Modalidades::class);
     }
 
-    public function getTipo(){
+    public function getTipo()
+    {
         $conexion = new Conexion();
         $conexion->conectar();
         $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM tipos_violencias WHERE id_tipo = ?");
@@ -76,9 +85,9 @@ class Descargo extends Conexion
 
     public function generatePDF()
     {
-        
+
         //Guardo resultado de getAgresor
-        $agresor= $this->getAgresor();
+        $agresor = $this->getAgresor();
 
         $pdf = new PDF();
         $pdf->AddPage();
@@ -101,13 +110,13 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->Cell(35, 10, utf8_decode('Nombre: '. $_SESSION['nombre']), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Nombre: ' . $_SESSION['nombre']), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Nombre autopercibido: '. $_SESSION['nombre_autoperc']), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Nombre autopercibido: ' . $_SESSION['nombre_autoperc']), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Apellido:'. $_SESSION['apellido']), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Apellido:' . $_SESSION['apellido']), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Celular: '. $_SESSION['celContacto']), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Celular: ' . $_SESSION['celContacto']), 0, 0, 'L', 0);
 
         $pdf->Ln();
         //Datos del agresor
@@ -120,17 +129,17 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->Cell(35, 10, utf8_decode('Nombre: '. $agresor->nombre), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Nombre: ' . $agresor->nombre), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Apellido: '. $agresor->apellido), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Apellido: ' . $agresor->apellido), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Altura: '. $agresor->getAltura()->altura), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Altura: ' . $agresor->getAltura()->altura), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Color de pelo: '.$agresor->getPelo()->detalle), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Color de pelo: ' . $agresor->getPelo()->detalle), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Tatuaje: '.$agresor->tatuaje), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Tatuaje: ' . $agresor->tatuaje), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(190, 10, utf8_decode('Cicatriz: '. $agresor->cicatriz), 0, 0, 'L', 0);
+        $pdf->Cell(190, 10, utf8_decode('Cicatriz: ' . $agresor->cicatriz), 0, 0, 'L', 0);
 
         $pdf->Ln();
         //Modalidad de violencia
@@ -143,7 +152,7 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->Cell(35, 10, utf8_decode('Modalidad de Violencia sufrida: '. $this->getModalidad()->nombre), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Modalidad de Violencia sufrida: ' . $this->getModalidad()->nombre), 0, 0, 'L', 0);
 
         $pdf->Ln();
         //Tipo de violencia
@@ -156,7 +165,7 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->Cell(35, 10, utf8_decode('Tipo de Violencia sufrida: '. $this->getTipo()->nombre), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Tipo de Violencia sufrida: ' . $this->getTipo()->nombre), 0, 0, 'L', 0);
 
         $pdf->Ln();
         //Relato de lo ocurrido
@@ -169,11 +178,55 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->MultiCell(190, 8, utf8_decode('Desarollo de lo ocurrido: '. $this->descargo), 0, 'L', 0);
-       
+        $pdf->MultiCell(190, 8, utf8_decode('Desarollo de lo ocurrido: ' . $this->descargo), 0, 'L', 0);
+
         $filename = date('dmY') . '_Descargo_' . $this->id_descargo . '.pdf';
         $ruta_archivo = "../temp/$filename";
 
         $pdf->Output('F', $ruta_archivo, true);
+    }
+
+    public function sendMail()
+    {
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();
+            $mail->Host = 'sandbox.smtp.mailtrap.io';
+            $mail->SMTPAuth = true;
+            $mail->Port = 2525;
+            $mail->Username = 'ee18f3d61763a8';
+            $mail->Password = '612870c3b36420';                        //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail->setFrom('asd@alertagenero.ar', 'AlertaGenero');
+            $mail->addAddress('rotilinicolas@gmail.com', 'Muni');     //Add a recipient
+            // $mail->addAddress('ellen@example.com');               //Name is optional
+            // $mail->addReplyTo('info@example.com', 'Information');
+            // $mail->addCC('cc@example.com');
+            // $mail->addBCC('bcc@example.com');
+
+            //Attachments
+            $filename = date('dmY') . '_Descargo_' . $this->id_descargo . '.pdf';
+            $ruta_archivo = "../temp/$filename";
+            $contenido = file_get_contents($ruta_archivo);
+            $mail->addStringAttachment($contenido, $filename);
+            if (file_exists($ruta_archivo)) {
+                unlink($ruta_archivo);
+            }
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = utf8_decode('Nuevo Descargo de Violencia de Género');
+            $mail->Body    = utf8_decode('Estimada/o, adjunto va un nuevo descargo por violencia de género sufrido en su Institución. <b>No dude en contactarnos para más información</b>');
+            //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            $mail->send();
+            echo 'Tu descargo ha sido enviado';
+        } catch (Exception $e) {
+            echo "El descargo no pudo ser enviado. Error: {$mail->ErrorInfo}";
+        }
     }
 }

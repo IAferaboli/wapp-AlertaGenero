@@ -3,6 +3,7 @@
 require_once "../models/descargos.php";
 require_once "../models/modalidades.php";
 require_once "../models/tipos_violencias.php";
+// require_once "enviarMail.php";
 
 $modalidades = Modalidades::getModalidades();
 $tipos = Tipos_violencia::getTipos();
@@ -21,6 +22,9 @@ if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSelecci
 
     $descargoCreado->generatePDF();
     session_destroy();
+
+    $descargoCreado->sendMail();
+    
 }
 
 
