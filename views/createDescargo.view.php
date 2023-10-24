@@ -26,7 +26,7 @@ require_once "../layout/head.view.php";
                             <?php foreach ($tipos as $tipo) { ?>
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
-                                    <label>
+                                    <label class="Palabras">
                                     <input type="radio" name="tipo_violenciaSeleccionada[]" value="<?= $tipo->id_tipo ?>"><?= $tipo->nombre ?>
                                     </label>
                                 </div>

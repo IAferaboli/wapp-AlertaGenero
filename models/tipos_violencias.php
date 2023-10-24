@@ -19,7 +19,7 @@ class Tipos_violencia extends Conexion {
     public static function getTipos(){
         $conexion = new Conexion();
         $conexion->conectar();
-        $prepare = mysqli_prepare($conexion->conect, "SELECT nombre, id_tipo FROM tipos_violencias");
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM tipos_violencias");
         $prepare->execute();
         $resposta = $prepare->get_result();
 

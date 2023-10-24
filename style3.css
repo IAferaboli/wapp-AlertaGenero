@@ -60,6 +60,7 @@ nav ul li a {
   padding: 5px 10px;
   transition: 0.2s;
   text-shadow: 2px 2px 5px rgb(65, 26, 88);
+  text-decoration: none;
 }
 
 
@@ -134,9 +135,8 @@ header .header-right .hamburger div {
 
 .form-vista-3{
   min-height : 100vh; 
-  background: rgb(85, 95, 231);
-  /* background: linear-gradient(141deg, rgb(177, 40, 40) 0%, rgb(160, 11, 11) 100%);  */
-  background: linear-gradient(141deg, rgb(77, 109, 168) 0%, rgb(53, 62, 143) 100%);
+  background: rgb(52, 54, 194);
+  background: linear-gradient(141deg, rgb(68, 61, 170) 0%, rgb(16, 23, 114) 100%);
   
 }
 
@@ -150,6 +150,20 @@ body {
   padding: 10px;
 }
 
+/* VISTA DE INFORME */
+.form-container-1-1{
+  background-color:rgba(125, 51, 168, 0.6) ;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.separador{
+  padding-bottom:1%;
+}
+
+/* VISTA DE CREATE USUARIE */
 .form-container-1 {
   background-color:rgba(125, 51, 168, 0.6) ;
   max-width: 400px;
@@ -197,6 +211,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* VISTA DE CREATE AGRESOR */
 .form-container-2 {
   /* background-color:rgb(168, 51, 51) ; */
   background-color: rgb(199 14 14);
@@ -245,26 +260,7 @@ body {
   margin-bottom: 10px;
 }
 
-.form-container-3 {
-  /* background-color:rgb(168, 51, 51) ; */
-  background-color: rgb(14, 25, 189);
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 5px;
-  
-}
 
-.form-container-3 h2 {
-  text-align: center;
-}
-
-.form-container-3 label,
-.form-container-3 input[type="text"] {
-  display: block;
-  font-weight: bolder;
-  margin-bottom: 10px;
-}
 
 .button-1 {
   background-color: #030303;
@@ -379,11 +375,44 @@ footer p
   margin-bottom: 10px;
   font-size: 1.1em;
   opacity: 0.75;
-}
-
+} 
 
 
 textarea {
   resize: none;
 }
 
+.button-2 {
+  background-color: #030303;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button-2:hover,
+.button-2:focus {
+  background-color: #9345a7;
+}

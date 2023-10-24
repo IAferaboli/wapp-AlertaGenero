@@ -1,4 +1,6 @@
-
+*{
+  text-decoration: none;
+}
 .cuerpoform {
   margin: 0;
   padding: 0;
@@ -9,8 +11,6 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  /* background: linear-gradient(to right, #cb232c, #ce1d61); */
-
   background: linear-gradient(to right, #812e5f, #410549);
 }
 
@@ -44,7 +44,6 @@
 
 .formulario label .fa-solid {
   font-size: 20px;
-  /* color: #cb232c; */
   color: #812e5f;
   margin-right: 10px;
 }
@@ -59,7 +58,6 @@
   border: none;
   color: #252525;
 
-  /* border-bottom: solid 1px #ce1d61; */
   border-bottom: solid 1px #410549;
   padding: 0 5px;
   font-size: 18px;
@@ -80,83 +78,35 @@
 }
 
 .formulario button {
-  color: #fff;
-  border: none;
-  /* background: linear-gradient(to right, #cb232c, #ce1d61); */
-
-  background: linear-gradient(to right, #812e5f, #410549);
-  padding: 10px 15px;
+  background-color: #030303;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
   cursor: pointer;
-  font-size: 20px;
-}
-/* 
-.foot{
-padding: auto;
-position: relative;
-width: 100%;
-display: flex;
-box-sizing: border-box;
-margin-top: 100px;
-
-}
-
-.pie {
-  margin-top: 10px;
-  position: relative;
-  width: 100%;
-  background: #000000;
-  min-height: 100px;
-  padding: 20px 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.pie .social_icon,
-.pie .menu {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-  flex-wrap: wrap;
-}
-.pie .social_icon li,
-.pie .menu li {
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
   list-style: none;
-}
-
-.pie .social_icon li a {
-  font-size: 2em;
-  color: #fff;
-  margin: 0 10px;
-  display: inline-block;
-  transition: 0.2s;
-}
-
-.pie .social_icon li a:hover {
-  transform: translateY(-10px);
-}
-
-.pie .menu li a {
-  font-size: 1.2em;
-  color: #fff;
-  margin: 0 10px;
-  display: inline-block;
-  text-decoration: none;
-  opacity: 0.75;
-}
-
-.pie .menu li a:hover {
-  opacity: 1;
-}
-
-.pie p {
-  color: #fff;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
   text-align: center;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  font-size: 1.1em;
-  opacity: 0.75;
-} */
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.formulario button:hover,
+.formulario button:focus {
+  background: linear-gradient(to right, #812e5f, #410549);
+}

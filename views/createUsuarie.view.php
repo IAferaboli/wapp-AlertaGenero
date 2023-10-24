@@ -69,54 +69,14 @@ require_once "../layout/head.view.php";
                                     $('#apellido').focus();
                                 }
                             });
-
+                            
                             $('#apellido').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();
                                     $('#fecnac').focus();
                                 }
                             });
-
-                            $('#fecnac').keypress(function(e) {
-                                if (e.keyCode == 13) {
-                                    e.preventDefault();
-                                    $('#celContacto').focus();
-                                }
-                            });
-                        </script>
-
-
-                        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
-
-                        <script type="text/javascript">
-                            $('#dni').keypress(function(e) {
-                                if (e.keyCode == 13) {
-                                    e.preventDefault();
-                                    $('#nombre').focus();
-                                }
-                            });
-
-                            $('#nombre').keypress(function(e) {
-                                if (e.keyCode == 13) {
-                                    e.preventDefault();
-                                    $('#nombre_autoperc').focus();
-                                }
-                            });
-
-                            $('#nombre_autoperc').keypress(function(e) {
-                                if (e.keyCode == 13) {
-                                    e.preventDefault();
-                                    $('#apellido').focus();
-                                }
-                            });
-
-                            $('#apellido').keypress(function(e) {
-                                if (e.keyCode == 13) {
-                                    e.preventDefault();
-                                    $('#fecnac').focus();
-                                }
-                            });
-
+                            
                             $('#fecnac').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();

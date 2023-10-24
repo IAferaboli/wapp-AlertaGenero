@@ -64,6 +64,18 @@ require_once "../layout/head.view.php";
                         </div>
                         <button class="button-1" type="submit">Siguiente</a></button>
 
+
+                        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+
+                        <script type="text/javascript">
+                            $('#nombre-agresor').keypress(function(e) {
+                                if (e.keyCode == 13) {
+                                    e.preventDefault();
+                                    $('#apellido-agresor').focus();
+                                }
+                            });
+
+                        </script>
                     </form>
                 </div>
             </div>
