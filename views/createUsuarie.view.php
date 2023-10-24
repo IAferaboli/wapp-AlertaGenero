@@ -69,14 +69,14 @@ require_once "../layout/head.view.php";
                                     $('#apellido').focus();
                                 }
                             });
-                            
+
                             $('#apellido').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();
                                     $('#fecnac').focus();
                                 }
                             });
-                            
+
                             $('#fecnac').keypress(function(e) {
                                 if (e.keyCode == 13) {
                                     e.preventDefault();
