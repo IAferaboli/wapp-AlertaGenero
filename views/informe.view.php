@@ -18,7 +18,7 @@ require_once "../layout/head.view.php";
                     <button class="button-2">porcentaje At. Medica</button>
                     <button class="button-2">Rango Etario</button>
                     <button class="button-2">Descargo por instituciones</button>
-                    <button class="button-2">Final de Presentación</button>
+                    <button class="button-2"><a href="../controladores/especial.html" class="link2">Final de Presentación</a></button>
                 </div>
             </div>
         </div>
