@@ -416,3 +416,7 @@ textarea {
 .button-2:focus {
   background-color: #9345a7;
 }
+
+.link2{
+  text-decoration: none;
+}
