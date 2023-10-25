@@ -59,7 +59,7 @@ require_once "../layout/head.view.php";
                         </div>
                         <br>
                         <div>
-                            <h4>cicatrices</h4>
+                            <h4>Cicatrices</h4>
                             <textarea rows="4" cols="50" name="cicatriz" placeholder="Descripción a detalle sobre cicatriz" maxlength="100"></textarea>
                         </div>
                         <button class="button-1" type="submit">Siguiente</a></button>
