@@ -229,4 +229,15 @@ class Descargo extends Conexion
             echo "El descargo no pudo ser enviado. Error: {$mail->ErrorInfo}";
         }
     }
+
+    //Método que me cuente cuantos descargos existen.
+    //Estático
+
+    public static function countDescargos() {
+        
+    }
+
+    public static function countEmerg() {
+        
+    }
 }
