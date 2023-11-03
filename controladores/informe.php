@@ -1,9 +1,11 @@
 <?php
+require_once "../models/descargos.php";
 
+$cantDescargos = Descargo::countDescargos()->fetch_assoc()['COUNT(*)'];
 
-// $cantDescargos = Descargo::countDescargos();
-$cantDescargos = 5;
-$cantEmerg=10;
+$cantEmerg= Descargo::countEmerg()->fetch_assoc()['COUNT(*)'];
+$porcentaje = $cantEmerg * 100 / $cantDescargos;
+$porcentajeEmerg = round($porcentaje,2);
 
 
 

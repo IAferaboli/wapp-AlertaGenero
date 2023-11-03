@@ -234,10 +234,20 @@ class Descargo extends Conexion
     //Estático
 
     public static function countDescargos() {
-        
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT COUNT(*) FROM descargos");
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado;
     }
 
     public static function countEmerg() {
-        
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT COUNT(*) FROM usuaries WHERE atencionMed=1");
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado;
     }
 }
