@@ -48,7 +48,6 @@ require_once "../layout/head.view.php";
             Swal.fire({
                 title: 'Cantidad de Emergencias!',
                 text: 'Al momento de realizar la presente consulta, el <?= $porcentajeEmerg ?> % de los usuaries indicó haber necesitado atención médica.',
-                // icon: 'success',
                 imageUrl: 'https://img.freepik.com/fotos-premium/paciente-accidente-emergencia-sufrio-cabeza-acostada-camilla-entrenamiento-primeros-auxilios-movimiento-paciente-caso-accidente-emergencia-paramedico-transfiere-al-paciente-al-coche-ambulancia-seleccione-centrarse-bolsa-primeros-auxilios_41097-372.jpg?w=740',
                 imageWidth: 400,
                 imageHeight: 300,

@@ -4,6 +4,7 @@ require_once "../layout/head.view.php";
 
 <head>
     <title>Descargo</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="form-vista-3">
@@ -55,7 +56,8 @@ require_once "../layout/head.view.php";
                             <textarea rows="6" cols="50" name="descargo" placeholder="Descripción del hecho" maxlength="500"></textarea>
                         </div>
                         <br>
-                        <button class="button-1" type="submit">Siguiente</a></button>
+
+                        <button onclick="send()" class="button-1" type="submit">Enviar</a></button>
 
                     </form>
                 </div>
@@ -65,6 +67,26 @@ require_once "../layout/head.view.php";
     <?php
     require_once "../layout/footer.view.php";
     ?>
+
+
+
+
+<script>
+        function send() {
+            Swal.fire({
+                title: 'Descargo enviado!',
+                text: 'Tu descargo se envió correctamente. Info de valor:',
+                icon: 'success',
+                imageUrl: 'https://img.freepik.com/fotos-premium/mujer-hombre-pelean-mientras-sentado-cama-su-casa_85574-6915.jpg?w=740',
+                imageWidth: 400,
+                imageHeight: 300,
+                background: 'rgba(125, 51, 168',
+                color:'white'
+            })
+        }
+    </script>
+     
+
 </body>
 
 </html>
