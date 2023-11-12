@@ -17,7 +17,7 @@ require_once "../layout/head.view.php";
                 <div class="button-container">
                     <button onclick="count()" class="button-2">Total Descargos</button>
                     <button onclick="countEmerg()" class="button-2">Porcentaje At. Medica</button>
-                    <button class="button-2">Rango Etario</button>
+                    <button onClick= "age()" class="button-2">Rango Etario</button>
                     <!-- <button class="button-2">Descargo por instituciones</button> -->
                     <button class="button-2"><a href="../controladores/especial.html" class="link2">Final de Presentación</a></button>
                 </div>
@@ -37,12 +37,12 @@ require_once "../layout/head.view.php";
                 imageUrl: 'https://img.freepik.com/fotos-premium/mujer-hombre-pelean-mientras-sentado-cama-su-casa_85574-6915.jpg?w=740',
                 imageWidth: 400,
                 imageHeight: 300,
-                background: 'rgba(125, 51, 168',
-                color:'white'
+                background: 'rgba(125, 51, 168)',
+                color: 'white'
             })
         }
     </script>
-     
+
     <script>
         function countEmerg() {
             Swal.fire({
@@ -51,9 +51,20 @@ require_once "../layout/head.view.php";
                 imageUrl: 'https://img.freepik.com/fotos-premium/paciente-accidente-emergencia-sufrio-cabeza-acostada-camilla-entrenamiento-primeros-auxilios-movimiento-paciente-caso-accidente-emergencia-paramedico-transfiere-al-paciente-al-coche-ambulancia-seleccione-centrarse-bolsa-primeros-auxilios_41097-372.jpg?w=740',
                 imageWidth: 400,
                 imageHeight: 300,
-                background: 'rgba(125, 51, 168',
-                color:'white'
-                
+                background: 'rgba(125, 51, 168)',
+                color: 'white'
+
+            })
+        }
+    </script>
+
+    <script>
+        function age() {
+            Swal.fire({
+                title: 'Descargos por rango etario!',
+                text: 'Al momento de realizar la presente consulta, los descargos realizados por rango etario son: 14 a 18 años: <?= $age1 ?> , 19 a 25 años: <?= $age2 ?> 26 a 35 años: <?= $age3 ?>',
+                background: 'rgba(125, 51, 168)',
+                color: 'white'
             })
         }
     </script>

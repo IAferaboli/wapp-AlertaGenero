@@ -21,10 +21,13 @@ if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSelecci
     $descargoCreado = $descargo->create();
 
     $descargoCreado->generatePDF();
-    session_destroy();
+    //session_destroy();
 
     $descargoCreado->sendMail();
     
+
+    header("Location: ../controladores/createUsuarie.php");
+    session_destroy(); 
 }
 
 

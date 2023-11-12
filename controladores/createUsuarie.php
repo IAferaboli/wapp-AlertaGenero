@@ -30,7 +30,7 @@ if(isset($_POST['dni']) || isset($_POST['nombre']) || isset($_POST['nombre_autop
     $_SESSION['apellido'] = $_POST['apellido'];
     $_SESSION['celContacto'] = $_POST['celContacto'];
 
-    header("Location: ../controladores/createAgresor.php");
+    header("Location: ../controladores/createAgresor.php"); 
 }
 
 require_once "../Views/createUsuarie.view.php";

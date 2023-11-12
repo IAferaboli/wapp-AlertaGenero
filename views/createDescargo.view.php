@@ -28,7 +28,7 @@ require_once "../layout/head.view.php";
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
                                     <label class="Palabras">
-                                    <input type="radio" name="tipo_violenciaSeleccionada[]" value="<?= $tipo->id_tipo ?>"><?= $tipo->nombre ?>
+                                        <input type="radio" name="tipo_violenciaSeleccionada[]" value="<?= $tipo->id_tipo ?>"><?= $tipo->nombre ?>
                                     </label>
                                 </div>
                             <?php } ?>
@@ -43,8 +43,8 @@ require_once "../layout/head.view.php";
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
                                     <label>
-                                    <input type="radio" name="modalidadSeleccionada[]" value="<?= $modalidad->id_modalidad ?>"><?= $modalidad->nombre ?>
-                                
+                                        <input type="radio" name="modalidadSeleccionada[]" value="<?= $modalidad->id_modalidad ?>"><?= $modalidad->nombre ?>
+
                                     </label>
                                     <!-- <input type="radio" name="modalidadSeleccionada[]" value="<?= $modalidad->id_modalidad ?>"><?= $modalidad->nombre ?> -->
                                 </div>
@@ -68,24 +68,28 @@ require_once "../layout/head.view.php";
     require_once "../layout/footer.view.php";
     ?>
 
-
-
-
-<script>
+    <script>
         function send() {
-            Swal.fire({
-                title: 'Descargo enviado!',
-                text: 'Tu descargo se envió correctamente. Info de valor:',
-                icon: 'success',
-                imageUrl: 'https://img.freepik.com/fotos-premium/mujer-hombre-pelean-mientras-sentado-cama-su-casa_85574-6915.jpg?w=740',
-                imageWidth: 400,
-                imageHeight: 300,
-                background: 'rgba(125, 51, 168',
-                color:'white'
-            })
+            if ($_SESSION['status'] = true) {
+                Swal.fire({
+                    title: 'ÉXITO!',
+                    text: 'El descargo ha sido enviado con éxito.',
+                    icon: 'success',
+                    background: 'rgba(125, 51, 168',
+                    color: 'white'
+                })
+            } else {
+                Swal.fire({
+                    title: 'ERROR!',
+                    text: "El descargo no se ha podido enviar. Error <? $_SESSION['error'] ?>",
+                    icon: 'success',
+                    background: 'rgba(125, 51, 168)',
+                    color: 'white'
+                })
+            }
         }
     </script>
-     
+
 
 </body>
 

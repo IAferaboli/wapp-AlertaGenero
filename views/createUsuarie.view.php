@@ -94,6 +94,7 @@ require_once "../layout/head.view.php";
     <?php
     require_once "../layout/footer.view.php";
     ?>
+    
 </body>
 
 </html>

@@ -186,8 +186,7 @@ class Descargo extends Conexion
         $pdf->Output('F', $ruta_archivo, true);
     }
 
-    public function sendMail()
-    {
+    public function sendMail(){
         $mail = new PHPMailer(true);
 
         try {
@@ -223,15 +222,17 @@ class Descargo extends Conexion
             $mail->Body    = utf8_decode('Estimada/o, adjunto va un nuevo descargo por violencia de género sufrido en su Institución. <b>No dude en contactarnos para más información</b>');
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-            $mail->send();
-            echo 'Tu descargo ha sido enviado';
+            if($mail->send()){
+                $_SESSION['status'] = true;
+            } else{
+                $_SESSION['status'] = false;
+            };
         } catch (Exception $e) {
-            echo "El descargo no pudo ser enviado. Error: {$mail->ErrorInfo}";
+            $_SESSION['error'] = $e->getMessage();
         }
     }
 
     //Método que me cuente cuantos descargos existen.
-    //Estático
 
     public static function countDescargos() {
         $conexion = new Conexion();
@@ -246,6 +247,33 @@ class Descargo extends Conexion
         $conexion = new Conexion();
         $conexion->conectar();
         $prepare = mysqli_prepare($conexion->conect, "SELECT COUNT(*) FROM usuaries WHERE atencionMed=1");
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado;
+    }
+
+    public static function age1() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT COUNT(*) FROM  usuaries  WHERE YEAR(fecnac) >= 2008 AND YEAR(fecnac) < 2013");
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado;
+    }
+
+    public static function age2() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT COUNT(*) FROM  usuaries  WHERE YEAR(fecnac) >= 2003 AND YEAR(fecnac) < 2008");
+        $prepare->execute();
+        $resultado = $prepare->get_result();
+        return $resultado;
+    }
+
+    public static function age3() {
+        $conexion = new Conexion();
+        $conexion->conectar();
+        $prepare = mysqli_prepare($conexion->conect, "SELECT COUNT(*) FROM  usuaries  WHERE YEAR(fecnac) >= 1988 AND YEAR(fecnac) < 2003");
         $prepare->execute();
         $resultado = $prepare->get_result();
         return $resultado;
