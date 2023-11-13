@@ -12,7 +12,7 @@
                         <a href="http://villaconstitucion.gob.ar/hcm/escaneando-violencia-de-genero/">Capacitación</a>
                     </li>
                     <li>
-                        <a href="">Politica de privacidad</a>
+                        <a href="../docs/Política_Privacidad.pdf">Politica de privacidad</a>
                     </li>
                     <li>
                         <a href="../controladores/login.php" class="login">Login</a>
