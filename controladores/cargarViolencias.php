@@ -16,7 +16,6 @@ if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSelecci
     $descargo->id_modalidad = $_POST['modalidadSeleccionada'];
     $descargo->id_tipo = $_POST['tipo_violenciaSeleccionada'];
     $descargo->descargo = $_POST['descargo'];
-
     
     $descargoCreado = $descargo->create();
 
@@ -25,9 +24,7 @@ if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSelecci
 
     $descargoCreado->sendMail();
     
-
     header("Location: ../controladores/createUsuarie.php");
-    session_destroy(); 
 }
 
 

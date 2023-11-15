@@ -70,25 +70,28 @@ require_once "../layout/head.view.php";
 
     <script>
         function send() {
-            if ($_SESSION['status'] = true) {
+            <? if ($_SESSION['status'] == true) { ?>
                 Swal.fire({
-                    title: 'ÉXITO!',
+                    title: 'ÉXITO',
                     text: 'El descargo ha sido enviado con éxito.',
-                    icon: 'success',
-                    background: 'rgba(125, 51, 168',
-                    color: 'white'
-                })
-            } else {
-                Swal.fire({
-                    title: 'ERROR!',
-                    text: "El descargo no se ha podido enviar. Error <? $_SESSION['error'] ?>",
                     icon: 'success',
                     background: 'rgba(125, 51, 168)',
                     color: 'white'
                 })
-            }
+            <?} else { ?>
+                Swal.fire({
+                    title: 'ERROR',
+                    text: "El descargo no se ha podido enviar. Error <? $_SESSION['error'] ?>",
+                    icon: 'alert',
+                    background: 'rgba(125, 51, 168)',
+                    color: 'white'
+                })
+           <? } ?>
         }
     </script>
+    
+    <? session_destroy(); ?>
+    
 
 
 </body>
