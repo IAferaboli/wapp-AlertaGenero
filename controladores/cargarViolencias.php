@@ -3,7 +3,7 @@
 require_once "../models/descargos.php";
 require_once "../models/modalidades.php";
 require_once "../models/tipos_violencias.php";
-
+session_start();
 
 $modalidades = Modalidades::getModalidades();
 $tipos = Tipos_violencia::getTipos();
@@ -11,20 +11,20 @@ $tipos = Tipos_violencia::getTipos();
 
 //CARGAR VIOLENCIAS
 
-if(isset($_POST['modalidadSeleccionada']) || isset($_POST['tipo_violenciaSeleccionada']) || isset($_POST['descargo'])){
+if(isset($_POST['modalidad']) || isset($_POST['tipo_violencia']) || isset($_POST['descargo'])){
     $descargo = new Descargo;
-    $descargo->id_modalidad = $_POST['modalidadSeleccionada'];
-    $descargo->id_tipo = $_POST['tipo_violenciaSeleccionada'];
+    $descargo->id_modalidad = $_POST['modalidad'];
+    $descargo->id_tipo = $_POST['tipo_violencia'];
     $descargo->descargo = $_POST['descargo'];
     
     $descargoCreado = $descargo->create();
 
     $descargoCreado->generatePDF();
-    //session_destroy();
+    session_destroy();
 
-    $descargoCreado->sendMail();
+    //$descargoCreado->sendMail();
     
-    header("Location: ../controladores/createUsuarie.php");
+    //header("Location: ../controladores/createUsuarie.php");
 }
 
 

@@ -17,8 +17,6 @@ require '../PHPMailer-master/src/PHPMailer.php';
 require '../PHPMailer-master/src/SMTP.php';
 
 
-
-session_start();
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 class Descargo extends Conexion
@@ -135,7 +133,7 @@ class Descargo extends Conexion
         $pdf->Ln();
         $pdf->Cell(35, 10, utf8_decode('Altura: ' . $agresor->getAltura()->altura), 0, 0, 'L', 0);
         $pdf->Ln();
-        $pdf->Cell(35, 10, utf8_decode('Color de pelo: ' . $agresor->getPelo()->detalle), 0, 0, 'L', 0);
+        $pdf->Cell(35, 10, utf8_decode('Color de pelo: ' . $agresor->getPelo()->color), 0, 0, 'L', 0);
         $pdf->Ln();
         $pdf->Cell(35, 10, utf8_decode('Tatuaje: ' . $agresor->tatuaje), 0, 0, 'L', 0);
         $pdf->Ln();

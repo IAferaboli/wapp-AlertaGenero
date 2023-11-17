@@ -17,18 +17,18 @@ require_once "../layout/head.view.php";
                 <div>
                     <form action="" method="post">
                         <div>
-                            <h2>Descripción del hecho</h2>
+                            <h2>Datos del hecho</h2>
                         </div>
                         <div class="row">
                             <div>
-                                <h4>Tipo de violencia</h4>
+                                <h4>Tipo de violencia sufrida</h4>
                             </div>
                             <br>
                             <?php foreach ($tipos as $tipo) { ?>
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
-                                    <label class="Palabras">
-                                        <input type="radio" name="tipo_violenciaSeleccionada[]" value="<?= $tipo->id_tipo ?>"><?= $tipo->nombre ?>
+                                    <label>
+                                        <input type="radio" name="tipo_violencia" value="<?= $tipo->id_tipo ?>"><?= $tipo->nombre ?>
                                     </label>
                                 </div>
                             <?php } ?>
@@ -43,21 +43,19 @@ require_once "../layout/head.view.php";
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
                                     <label>
-                                        <input type="radio" name="modalidadSeleccionada[]" value="<?= $modalidad->id_modalidad ?>"><?= $modalidad->nombre ?>
-
+                                        <input type="radio" name="modalidad" value="<?= $modalidad->id_modalidad ?>"><?= $modalidad->nombre ?>
                                     </label>
-                                    <!-- <input type="radio" name="modalidadSeleccionada[]" value="<?= $modalidad->id_modalidad ?>"><?= $modalidad->nombre ?> -->
                                 </div>
                             <?php } ?>
                         </div>
                         <br>
                         <div>
                             <h4>Descripción del hecho</h4>
-                            <textarea rows="6" cols="50" name="descargo" placeholder="Descripción del hecho" maxlength="500"></textarea>
+                            <textarea rows="6" cols="50" name="descargo" placeholder="Describe lo máximo que recuerdes para poder tomar medidas adecuadas..." maxlength="500"></textarea>
                         </div>
                         <br>
 
-                        <button onclick="send()" class="button-1" type="submit">Enviar</a></button>
+                        <button class="button-1" type="submit">Enviar</a></button>
 
                     </form>
                 </div>
@@ -67,32 +65,6 @@ require_once "../layout/head.view.php";
     <?php
     require_once "../layout/footer.view.php";
     ?>
-
-    <script>
-        function send() {
-            <? if ($_SESSION['status'] == true) { ?>
-                Swal.fire({
-                    title: 'ÉXITO',
-                    text: 'El descargo ha sido enviado con éxito.',
-                    icon: 'success',
-                    background: 'rgba(125, 51, 168)',
-                    color: 'white'
-                })
-            <?} else { ?>
-                Swal.fire({
-                    title: 'ERROR',
-                    text: "El descargo no se ha podido enviar. Error <? $_SESSION['error'] ?>",
-                    icon: 'alert',
-                    background: 'rgba(125, 51, 168)',
-                    color: 'white'
-                })
-           <? } ?>
-        }
-    </script>
-    
-    <? session_destroy(); ?>
-    
-
 
 </body>
 

@@ -33,7 +33,7 @@ require_once "../layout/head.view.php";
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
                                     <label>
-                                        <input type="radio" name="alturaSeleccionada[]" value="<?= $altura->id_altura ?>"><?= $altura->altura ?>
+                                        <input type="radio" name="altura" value="<?= $altura->id_altura ?>"><?= $altura->altura ?>
                                     </label>
                                 </div>
                             <?php } ?>
@@ -47,7 +47,7 @@ require_once "../layout/head.view.php";
                                 <div class="col col-4 col-md-4">
                                     <!-- Radio list -->
                                     <label>
-                                        <input type="radio" name="peloSeleccionado[]" value="<?= $pelo->id_color ?>"><?= $pelo->color ?>
+                                        <input type="radio" name="pelo" value="<?= $pelo->id_color ?>"><?= $pelo->color ?>
                                     </label>
                                 </div>
                             <?php } ?>

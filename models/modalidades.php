@@ -19,7 +19,7 @@ class Modalidades extends Conexion {
     public static function getModalidades(){
         $conexion = new Conexion();
         $conexion->conectar();
-        $prepare = mysqli_prepare($conexion->conect, "SELECT nombre, id_modalidad FROM modalidades");
+        $prepare = mysqli_prepare($conexion->conect, "SELECT * FROM modalidades");
         $prepare->execute();
         $resposta = $prepare->get_result();
 

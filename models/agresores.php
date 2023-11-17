@@ -2,20 +2,9 @@
 
 require_once "conexion.php";
 
-
 class Agresor extends Conexion {
 
     public $id_agresor, $nombre, $apellido, $id_altura, $id_color, $tatuaje, $cicatriz;
-
-    
-    // public function codearagresor($nombre, $apellido){
-    //     $name = substr($nombre, 0, 3);
-    //     $apell = substr($apellido, -3, 3);
-
-    //     $alfanum = $name . $apell;
-
-    //     return $alfanum;
-    // }
 
     public function getPelo(){
         $conexion = new Conexion();
