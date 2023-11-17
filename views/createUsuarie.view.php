@@ -94,7 +94,30 @@ require_once "../layout/head.view.php";
     <?php
     require_once "../layout/footer.view.php";
     ?>
-    
+
 </body>
+
+<? if (isset($_SESSION['status']) && $_SESSION['status'] == true) {
+    echo " <script>
+            Swal.fire({
+                title: 'ÉXITO',
+                text: 'Tu descargo ha sido enviado exitosamente',
+                icon: 'success',
+                background: 'rgba(125, 51, 168)',
+                color: 'white'
+            });
+            </script>";
+} else {
+    echo " <script>
+                Swal.fire({
+                    title: 'ERROR',
+                    text: 'Tu descargo no se ha podido enviar. Error: {$_SESSION['error']}',
+                    icon: 'success',
+                    background: 'rgba(125, 51, 168)',
+                    color: 'white'
+                });
+           </script>";
+};
+?>
 
 </html>
