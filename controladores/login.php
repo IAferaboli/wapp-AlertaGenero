@@ -5,6 +5,8 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
     $password = $_POST['password'];
     if($username == "EstebanL650" && $password == "1234qwerty"){
         header("location: informe.php");
+    }elseif ($username == "Fera360" && $password == "1234qwerty") {
+        header("location: informe.php");
     }else{
     }
 }
