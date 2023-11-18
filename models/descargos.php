@@ -176,7 +176,7 @@ class Descargo extends Conexion
 
         $pdf->Ln();
 
-        $pdf->MultiCell(190, 8, utf8_decode('Desarollo de lo ocurrido: ' . $this->descargo), 0, 'L', 0);
+        $pdf->MultiCell(190, 8, utf8_decode('Desarrollo de lo ocurrido: ' . $this->descargo), 0, 'L', 0);
 
         $filename = date('dmY') . '_Descargo_' . $this->id_descargo . '.pdf';
         $ruta_archivo = "../temp/$filename";

@@ -4,6 +4,7 @@ require_once "../layout/head.view.php";
 
 <head>
     <title>Usuarie</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="form-vista-1">
@@ -97,7 +98,7 @@ require_once "../layout/head.view.php";
 
 </body>
 
-<? if (isset($_SESSION['status']) && $_SESSION['status'] == true) {
+<?php if (isset($_SESSION['status']) && $_SESSION['status'] == true) {
     echo " <script>
             Swal.fire({
                 title: 'ÉXITO',
@@ -112,7 +113,7 @@ require_once "../layout/head.view.php";
                 Swal.fire({
                     title: 'ERROR',
                     text: 'Tu descargo no se ha podido enviar. Error: {$_SESSION['error']}',
-                    icon: 'success',
+                    icon: 'warning',
                     background: 'rgba(125, 51, 168)',
                     color: 'white'
                 });
