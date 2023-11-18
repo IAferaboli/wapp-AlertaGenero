@@ -15,6 +15,10 @@ require_once "../layout/head.view.php";
             <div>
                 <div>
                     <form action="" method="post">
+
+                        <h2>Datos del Agresor</h2>
+
+
                         <label for="nombre-agresor"><b>Nombre</b></label>
                         <input type="text" id="nombre-agresor" placeholder="Ingresar nombre" name="nombre-agresor">
 
@@ -74,7 +78,6 @@ require_once "../layout/head.view.php";
                                     $('#apellido-agresor').focus();
                                 }
                             });
-
                         </script>
                     </form>
                 </div>
