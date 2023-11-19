@@ -9,7 +9,7 @@
                         <a href="../controladores/createUsuarie.php">Inicio</a>
                     </li>
                     <li>
-                        <a href="http://villaconstitucion.gob.ar/hcm/escaneando-violencia-de-genero/">Capacitación</a>
+                        <a href="../views/info.view.php">Capacitación</a>
                     </li>
                     <li>
                         <a href="../docs/Política_Privacidad.pdf">Politica de privacidad</a>
