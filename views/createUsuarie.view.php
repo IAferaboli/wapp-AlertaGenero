@@ -98,8 +98,10 @@ require_once "../layout/head.view.php";
 
 </body>
 
-<?php if (isset($_SESSION['status']) && $_SESSION['status'] == true) {
-    echo " <script>
+<?php if (isset($_SESSION['status'])) {
+
+    if ($_SESSION['status'] == true) {
+        echo " <script>
             Swal.fire({
                 title: 'ÉXITO',
                 text: 'Tu descargo ha sido enviado exitosamente',
@@ -108,17 +110,20 @@ require_once "../layout/head.view.php";
                 color: 'white'
             });
             </script>";
-} else {
-    echo " <script>
-                Swal.fire({
-                    title: 'ERROR',
-                    text: 'Tu descargo no se ha podido enviar. Error: {$_SESSION['error']}',
-                    icon: 'warning',
-                    background: 'rgba(125, 51, 168)',
-                    color: 'white'
-                });
-           </script>";
-};
+    } else {
+        echo " <script>
+                    Swal.fire({
+                        title: 'ERROR',
+                        text: 'Tu descargo no se ha podido enviar. Error: {$_SESSION['error']}',
+                        icon: 'warning',
+                        background: 'rgba(125, 51, 168)',
+                        color: 'white'
+                    });
+                </script>";
+    };
+    session_destroy();
+}
+
 ?>
 
 </html>

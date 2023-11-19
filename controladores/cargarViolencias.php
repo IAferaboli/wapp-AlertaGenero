@@ -20,9 +20,9 @@ if(isset($_POST['modalidad']) || isset($_POST['tipo_violencia']) || isset($_POST
     $descargoCreado = $descargo->create();
 
     $descargoCreado->generatePDF();
-    session_destroy();
-
+    
     $descargoCreado->sendMail();
+    
     
     header("Location: ../controladores/createUsuarie.php");
 }
